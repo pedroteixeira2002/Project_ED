@@ -3,6 +3,11 @@
  */
 package game;
 
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Node;
+
+import java.util.stream.Stream;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";

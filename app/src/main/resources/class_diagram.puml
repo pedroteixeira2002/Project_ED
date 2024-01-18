@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Maps
+class Map
+class Player
+class Bot
+class CaptureTheFlag
+class Algorithm
+class Algorithms
+class Flag
+
+class CaptureTheFlag{
+    - player1 : Player
+    - player2 : Player
+    - map : Map
+    + getters() and setters()
+    + newGame() : void
+}
+class Maps{
+    - maps : List?<Map>
+    +getMaps() :
+}
+
+class Map {
+  + importMap : Map
+}
+
+class Player{
+
+}
+
+class Bot{
+}
+
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class CaptureTheFlag{
+  Map map ;
+  Player player1m, player2 ;
+
+    public CaptureTheFlag() {
+        this.map = new Map;
+        this.player1 = new Player;
+        this.player2 = new Player;
+    }
+}
+
