@@ -13,14 +13,13 @@
 |___________________________________________________________________|
 
 _________________________________________________________________________________
-|                                                                                |
 |                        Questões a ter atenção                                  |
 |________________________________________________________________________________|
 | 1.1 Deverá ser possível importar um mapa que terá sido previamente definido    |
 |noutra instância do programa e consequentemente, exportá-lo                     |
 | 1.2 Configurar as características do mapa                                      |
 |    1.2.1 Definir quantidade de localizações existentes no mapa                 |
-|    1.2.2 Definir o tipo dos caminhos que serão gerados(bidirecionais ou não    |
+|    1.2.2 Definir o tipo dos caminhos que serão gerados(bidirecionais ou não)   |
 |    1.2.3 Definir densidade das arestas                                         |
 |    1.2.4 Gerar aleatoriamente o mapa após as definições anteriores             |
 |    1.2.5 Gerar automaticamente distâncias entre pontos (entre 1 a 15km)        |
@@ -38,3 +37,67 @@ ________________________________________________________________________________
 | 9. Deverão ser criados pelo menos 3 algarismos de movimentação dos bots        |
 | 10. Desenvolver menus                                                          |
 |________________________________________________________________________________|
+
+ ___________________________________________________________________
+|           Possíseis classes relativas à componente jogo           |
+|___________________________________________________________________|
+| MapList                                                           |
+| Map                                                               |
+| Player                                                            |
+| Bot                                                               |
+| Algorithm                                                         |
+| Algorithms                                                        |
+|___________________________________________________________________|
+
+
+
+
+
+
+
+ ___________________________________________________________________
+|                                  Menu                             |
+|___________________________________________________________________|
+| 1. Novo Jogo                                                      |
+| ....
+|___________________________________________________________________|
+
+ ___________________________________________________________________
+|     1                        Novo jogo                            |
+|___________________________________________________________________|
+|                                                                   |
+| 1. Criar novo mapa                                                |
+| 2. Importar mapa                                                  |
+|___________________________________________________________________|
+
+ ___________________________________________________________________
+|      1                       Criar mapa                           |
+|___________________________________________________________________|
+|                                                                   |                                               |
+|  Deseja exportar o novo mapa que criou?                           |
+|___________________________________________________________________|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
