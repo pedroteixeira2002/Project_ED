@@ -1,12 +1,11 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Maps
 class Map
 class Player
 class Bot
 class Game
-class MovementAlgorithm
+class Algorithms
 class Flag
 
 class Game {
@@ -29,20 +28,13 @@ class Map {
     + exportMap() : void
 }
 
-class Edge {
-    - location1 : Location            // location 1 of the edge
-    - location2 : Location            // location 2 of the edge
-    - bidirectional : boolean         // true if the edge is bidirectional, false otherwise
-    + getters() and setters()
-    + isBidirectional() : boolean
-}
 'Classe Correta Não Alterar'
 class Location {
     - positionX : int                 // x coordinate of the location on the map
     - positionY : int                 // y coordinate of the location on the map
     + getters() and setters()
 }
-
+'Classe Correta Não Alterar'
 class Flag {
     - location : Location              // location of the flag on the map
     - owner : Player                   // player who owns the flag
@@ -52,9 +44,7 @@ class Flag {
 class Player {
     - id : int                         // unique id of the player
     - name : String                    // name of the player
-    - location : Location              // location of the player on the map
-    - flag : Flag                      // flag held by the player
-    - bots : UnorderedLinkedList<Bot>          // list of bots controlled by the player
+    - bots : UnorderedLinkedList<Bot>  // list of bots controlled by the player
     + getters() and setters()
 }
 class Bot {
@@ -65,7 +55,7 @@ class Bot {
 
 }
 
-class Algorithm {
+class Algorithms {
     + move() : Location
 }
 
