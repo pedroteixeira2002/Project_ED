@@ -6,11 +6,11 @@ public class Flag implements IFlag {
     /** Location of the flag */
     private Location location;
     /** Owner of the flag */
-    private  Player onwer;
+    private  Player owner;
 
-    public Flag(Location location, Player onwer) {
+    public Flag(Location location, Player owner) {
         this.location = location;
-        this.onwer = onwer;
+        this.owner = owner;
     }
 
     public Location getLocation() {
@@ -21,11 +21,11 @@ public class Flag implements IFlag {
         this.location = location;
     }
 
-    public Player getOnwer() {
-        return onwer;
+    public Player getOwner() {
+        return owner;
     }
 
-    public void setOnwer(Player onwer) {
-        this.onwer = onwer;
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 }
