@@ -26,7 +26,7 @@ ________________________________________________________________________________
 |    1.2.6 Adicionar opção para guardar mapa de forma a utilizar noutra partida  |
 | 4.1 Desenvolver algoritmos para deslocação dos bots                            |
 |    4.1.1 Garantir que os algoritmos só se repetem se o número de bots ultrapas-|
-|-sar o número de algoritmos disponível                                          |
+|-sar o número de algoritmos disponível                                              |
 | 5.1 Todos os bots deverão estar localizados na mesma posição da bandeira       |
 | 6.1 Os bots movem-se um de cada vez (bot1, bot2, bot3, etc)                    |
 |    6.1.1 Quando não há mais bots volta ao primeiro(Na quarta ronda, deve voltar|
@@ -49,12 +49,6 @@ ________________________________________________________________________________
 | Algorithms                                                        |
 |___________________________________________________________________|
 
-
-
-
-
-
-
  ___________________________________________________________________
 |                                  Menu                             |
 |___________________________________________________________________|
@@ -73,12 +67,24 @@ ________________________________________________________________________________
  ___________________________________________________________________
 |      1                       Criar mapa                           |
 |___________________________________________________________________|
-|                                                                   |                                               |
-|  Deseja exportar o novo mapa que criou?                           |
+|                                                                   |
+|  Deseja guardar o mapa que criou?                                 |
 |___________________________________________________________________|
 
 
 
+ ___________________________________________________________________
+|                              Algoritmos                           |
+|___________________________________________________________________|
+|                                                                   |
+|    |1. Bot que ataca pelo caminho mais curto|                     |
+|                                                                   |
+|    2. Bot que ataca pelo caminho mais longo                       |
+|    3. Bot que se movimenta de forma random                        |
+|                                                                   |
+|    4. Bot que defende (movimenta-se conforme o outro jogador)     |
+|    5. |
+|___________________________________________________________________|
 
 
 

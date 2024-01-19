@@ -20,6 +20,9 @@ public class Map {
         this.graphMap = new Network<>();
         this.flagLocations = new UnorderedLinkedList<>();
 
+
+
+
         // Generate the locations in the map
         for (int i = 0; i < numLocations; i++) {
             int x = (int) (Math.random() * 100); // Give random coordinates between 0 and 100
