@@ -22,7 +22,9 @@ public class Map {
 
         // Generate the locations in the map
         for (int i = 0; i < numLocations; i++) {
-            Location location = new Location(i,i); // /* coordenadas ou informações relevantes */ Alterar depois
+            int x = (int) (Math.random() * 100); // Give random coordinates between 0 and 100
+            int y = (int) (Math.random() * 100); // Give random coordinates between 0 and 100
+            Location location = new Location(x,y);
             this.graphMap.addVertex(location);
         }
 
