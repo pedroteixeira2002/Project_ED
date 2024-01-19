@@ -5,33 +5,73 @@ class Maps
 class Map
 class Player
 class Bot
-class CaptureTheFlag
-class Algorithm
-class Algorithms
+class Game
+class MovementAlgorithm
 class Flag
 
-class CaptureTheFlag{
-    - player1 : Player
-    - player2 : Player
-    - map : Map
+class Game {
+    - map : Map                    // map of the game
+    - player1 : Player             // player 1 of the game
+    - player2 : Player             // player 2 of the game
+    - currentPlayer : Player       // current player of the game
+    - round : int                  // current round of the game
     + getters() and setters()
-    + newGame() : void
-}
-class Maps{
-    - maps : List?<Map>
-    +getMaps() :
+    + startGame() : void
+    + checkGameOver() : boolean
+    + getWinner() : Player
 }
 
 class Map {
-  + importMap : Map
+    - graphMap : Newtork<Location>                   // graph representing the map
+    - flagLocations : UnorderedLinkedList<Location>  // list of flag locations(vertices) on the map
+    + generateMap() : Map
+    + importMap() : void
+    + exportMap() : void
 }
 
-class Player{
+class Edge {
+    - location1 : Location            // location 1 of the edge
+    - location2 : Location            // location 2 of the edge
+    - bidirectional : boolean         // true if the edge is bidirectional, false otherwise
+    + getters() and setters()
+    + isBidirectional() : boolean
+}
+'Classe Correta Não Alterar'
+class Location {
+    - positionX : int                 // x coordinate of the location on the map
+    - positionY : int                 // y coordinate of the location on the map
+    + getters() and setters()
+}
+
+class Flag {
+    - location : Location              // location of the flag on the map
+    - owner : Player                   // player who owns the flag
+    + getters() and setters()
+}
+
+class Player {
+    - id : int                         // unique id of the player
+    - name : String                    // name of the player
+    - location : Location              // location of the player on the map
+    - flag : Flag                      // flag held by the player
+    - bots : UnorderedLinkedList<Bot>          // list of bots controlled by the player
+    + getters() and setters()
+}
+class Bot {
+    - id : int                         // unique id of the bot
+    - algorithm : Algorithm            // algorithm used by the bot to move
+    - location : Location              // location of the bot on the map
+    + getters() and setters()
 
 }
 
-class Bot{
+class Algorithm {
+    + move() : Location
 }
+
+
+
+
 
 
 @enduml

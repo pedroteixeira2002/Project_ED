@@ -3,7 +3,6 @@
  */
 package src;
 
-import game.App;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
