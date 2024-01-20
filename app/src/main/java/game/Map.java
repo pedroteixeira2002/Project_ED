@@ -1,12 +1,13 @@
 package game;
 
 import collections.lists.UnorderedLinkedList;
+import interfaces.IMap;
 import structures.NetworkEnhance;
 
 
 import java.util.Random;
 
-public class Map {
+public class Map implements IMap {
     private NetworkEnhance<Location> graphMap;
     private UnorderedLinkedList<Location> flagLocations;
 
@@ -28,8 +29,8 @@ public class Map {
 
 
         // Check if edgeDensity is in the correct range
-        if (edgeDensity < 0.00 || edgeDensity > 1.00) {
-            throw new IllegalArgumentException("A densidade de arestas deve estar no intervalo de 0.00 a 1.00");
+        if (edgeDensity < 0.01 || edgeDensity > 1.00) {
+            throw new IllegalArgumentException("A densidade de arestas deve estar no intervalo de 0.01 a 1.00");
         }
 
 
