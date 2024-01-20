@@ -8,11 +8,13 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+
 }
 
 dependencies {
@@ -26,6 +28,8 @@ dependencies {
 
     // Use Gson to parse JSON into Java objects.
     implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation files('libs/Data-Structures.jar')
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -37,10 +41,10 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'src.game'
+    mainClass = 'src.main.java.Main'
 }
 
-tasks.named('test') {
-    // Use JUnit Platform for unit tests.
+test {
+    // Use junit-platform-console-standalone to render the test results.
     useJUnitPlatform()
 }
