@@ -1,17 +1,17 @@
 package game;
 
+import algorithms.Algorithm;
 import interfaces.IBot;
 
 public class Bot implements IBot {
     private static int nextId = 0;
     private int id;
     private Location location;
-    private Algorithms algorithms;
+    private Algorithm algorithm;
 
-    public Bot(Location location, Algorithms algorithms) {
+    public Bot(Location location) {
         this.id = nextId++;
         this.location = location;
-        this.algorithms = algorithms;
     }
 
     public int getId() {
@@ -24,14 +24,23 @@ public class Bot implements IBot {
 
     public void setLocation(Location location) {
         this.location = location;
+
     }
 
-    public Algorithms getAlgorithms() {
-        return algorithms;
-    }
+    public Algorithm setAlgorithm(int choice) {
+        switch (choice) {
+            case 1:
+                return algorithm = new Algorithm.MoveByRandomPath();
 
-    public void setAlgorithms(Algorithms algorithms) {
-        this.algorithms = algorithms;
+            case 2:
+                return algorithm = new Algorithm.MoveByLongestPath();
+
+            case 3:
+                return algorithm = new Algorithm.MoveToBlock();
+
+            default:
+                return algorithm = new Algorithm.MoveByShortestPath();
+        }
     }
 
     @Override
@@ -39,6 +48,6 @@ public class Bot implements IBot {
         return "\nBot:" +
                 "\nID: " + id +
                 "\nStart Location: " + location +
-                "\nAlgorithms this bot uses: " + algorithms.toString();
+                "\nUsed algorithm: " + algorithm.toString();
     }
 }
