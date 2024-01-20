@@ -15,5 +15,4 @@ public class NetworkEnhance<T> extends Network<T> {
             return null;
         }
     }
-
 }

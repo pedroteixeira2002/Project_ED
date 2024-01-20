@@ -4,9 +4,10 @@ import collections.lists.OrderedLinkedList;
 import game.Flag;
 import game.Location;
 import game.Map;
+import interfaces.IAlgorithm;
 import structures.NetworkEnhance;
 
-public abstract class Algorithm {
+public class Algorithm implements IAlgorithm {
     protected NetworkEnhance<Location> graph;
     protected OrderedLinkedList<Flag> flags;
 
