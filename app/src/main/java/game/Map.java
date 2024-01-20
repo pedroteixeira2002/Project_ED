@@ -1,6 +1,6 @@
 package game;
 
-import collections.lists.UnorderedLinkedList;
+import collections.lists.OrderedLinkedList;
 import interfaces.IMap;
 import structures.NetworkEnhance;
 
@@ -9,11 +9,11 @@ import java.util.Random;
 
 public class Map implements IMap {
     private NetworkEnhance<Location> graphMap;
-    private UnorderedLinkedList<Location> flagLocations;
+    private OrderedLinkedList<Location> flagLocations;
 
     public Map() {
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new UnorderedLinkedList<>();
+        this.flagLocations = new OrderedLinkedList<>();
     }
 
     /**
@@ -25,7 +25,7 @@ public class Map implements IMap {
     public void generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new UnorderedLinkedList<>();
+        this.flagLocations = new OrderedLinkedList<>();
 
 
         // Check if edgeDensity is in the correct range
