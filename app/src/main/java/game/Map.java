@@ -9,11 +9,19 @@ import java.util.Random;
 
 public class Map implements IMap {
     private NetworkEnhance<Location> graphMap;
-    private OrderedLinkedList<Location> flagLocations;
+    private OrderedLinkedList<Flag> flagLocations;
 
     public Map() {
         this.graphMap = new NetworkEnhance<>();
         this.flagLocations = new OrderedLinkedList<>();
+    }
+
+    public NetworkEnhance<Location> getGraphMap() {
+        return graphMap;
+    }
+
+    public OrderedLinkedList<Flag> getFlagLocations() {
+        return flagLocations;
     }
 
     /**

@@ -9,6 +9,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'java'
+    id 'pmd'
 }
 
 repositories {
@@ -30,6 +31,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 
     implementation files('libs/Data-Structures.jar')
+    implementation files('libs/gs-core-2.0.jar')
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

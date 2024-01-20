@@ -8,11 +8,13 @@ public class Bot implements IBot {
     private int id;
     private Location location;
     private Algorithm algorithm;
+    private Player owner;
 
-    public Bot(Location location, Algorithm algorithm) {
+    public Bot(Location location, Algorithm algorithm, Player owner) {
         this.id = nextId++;
         this.location = location;
         this.algorithm = algorithm;
+        this.owner = owner;
     }
 
     public int getId() {
@@ -31,19 +33,19 @@ public class Bot implements IBot {
         return algorithm;
     }
 
-    public Algorithm setAlgorithm(int choice) {
+    public Algorithm setAlgorithm(int choice, Map map) {
         switch (choice) {
             case 1:
-                return algorithm = new Algorithm.MoveByRandomPath();
+                return algorithm = new Algorithm.MoveByRandomPath(map);
 
             case 2:
-                return algorithm = new Algorithm.MoveByLongestPath();
+                return algorithm = new Algorithm.MoveByLongestPath(map);
 
             case 3:
-                return algorithm = new Algorithm.MoveToBlock();
+                return algorithm = new Algorithm.MoveToBlock(map);
 
             default:
-                return algorithm = new Algorithm.MoveByShortestPath();
+                return algorithm = new Algorithm.MoveByShortestPath(map);
         }
     }
 

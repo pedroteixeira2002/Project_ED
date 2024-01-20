@@ -1,10 +1,37 @@
 package algorithms;
 
+import collections.lists.OrderedLinkedList;
+import game.Flag;
+import game.Location;
+import game.Map;
+import structures.NetworkEnhance;
+
 public abstract class Algorithm {
+    protected NetworkEnhance<Location> graph;
+    protected OrderedLinkedList<Flag> flags;
+
+    public Algorithm(Map map) {
+        this.graph = map.getGraphMap();
+        this.flags = map.getFlagLocations();
+    }
+
+    public void move() {
+        System.out.println("move");
+    }
+
     public static class MoveByShortestPath extends Algorithm {
 
-        public void move() {
-            System.out.println("MoveByShortestPath");
+        public MoveByShortestPath(Map map) {
+            super(map);
+        }
+        public void move(Map map) {
+            int shortestPathLength = this.graph.shortestPathLength
+                    (this.flags.head.getElement().getLocation(), this.flags.tail.getElement().getLocation());
+
+            this.graph.iteratorShortestPath
+                    (this.flags.head.getElement().getLocation(), this.flags.tail.getElement().getLocation());
+
+
         }
 
         @Override
@@ -14,6 +41,10 @@ public abstract class Algorithm {
     }
 
     public static class MoveByRandomPath extends Algorithm {
+        public MoveByRandomPath(Map map) {
+            super(map);
+        }
+
         public void move() {
             System.out.println("moveByRandomPath");
         }
@@ -25,6 +56,10 @@ public abstract class Algorithm {
     }
 
     public static class MoveByLongestPath extends Algorithm {
+        public MoveByLongestPath(Map map) {
+            super(map);
+        }
+
         public void move() {
             System.out.println("MoveByLongestPath");
         }
@@ -36,6 +71,10 @@ public abstract class Algorithm {
     }
 
     public static class MoveToBlock extends Algorithm {
+        public MoveToBlock(Map map) {
+            super(map);
+        }
+
         public void move() {
             System.out.println("moveToBlock");
         }
