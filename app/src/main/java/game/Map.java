@@ -30,7 +30,7 @@ public class Map implements IMap {
      * @param bidirectional
      * @param edgeDensity
      */
-    public void generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
+    public NetworkEnhance<Location> generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
         this.flagLocations = new OrderedLinkedList<>();
@@ -70,6 +70,9 @@ public class Map implements IMap {
                 }
             }
         }
+
+        // Return the generated map
+        return this.graphMap;
     }
 
     /**
@@ -83,4 +86,5 @@ public class Map implements IMap {
         return this.graphMap.getVertex(randomIndex);
 
     }
+
 }

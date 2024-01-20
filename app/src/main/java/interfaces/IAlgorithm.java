@@ -1,8 +1,10 @@
 package interfaces;
 
+import game.Location;
+import game.Map;
+
 public interface IAlgorithm {
 
-    public void move();
+    Location move(Map map);
 
-    public String toString();
 }
