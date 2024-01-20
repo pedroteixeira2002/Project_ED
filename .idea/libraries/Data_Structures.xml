@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Data-Structures">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/Data-Structures.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Data-Structures/out/artifacts/Data_Structures_jar/Data-Structures.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
