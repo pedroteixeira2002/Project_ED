@@ -1,20 +1,20 @@
 package algorithms;
 
-import collections.graphs.Network;
-import game.Bot;
+import collections.lists.OrderedLinkedList;
+import game.Flag;
 import game.Location;
 import game.Map;
 import interfaces.IAlgorithm;
 import structures.NetworkEnhance;
 
 import java.util.Random;
-
-public class RandomPath implements IAlgorithm {
-
-    private Map map;
-    public RandomPath(Map map) {
-        this.map = map;
-    }
+    public class RandomPath implements IAlgorithm {
+        private NetworkEnhance<Location> graph;
+        private OrderedLinkedList<Flag> flags;
+        public RandomPath(Map map) {
+            this.graph = map.getGraphMap();
+            this.flags = map.getFlagLocations();
+        }
 
     public void move(Bot bot, Map map) {
         /*
@@ -32,8 +32,6 @@ public class RandomPath implements IAlgorithm {
         }
         */
     }
-
-
     @Override
     public Location move(Map map) {
         return null;

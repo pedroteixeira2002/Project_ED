@@ -1,21 +1,26 @@
 package game;
 
+import algorithms.BlockPath;
+import algorithms.LongestPath;
 import algorithms.RandomPath;
+import algorithms.ShortestPath;
 import interfaces.IAlgorithm;
 import interfaces.IBot;
 
 public class Bot implements IBot {
     private static int nextId = 0;
     private int id;
+    private Flag flag;
     private Location location;
     private IAlgorithm algorithm;
     private Player owner;
 
-    public Bot(Location location, IAlgorithm algorithm, Player owner) {
+    public Bot(IAlgorithm algorithm, Flag flag) {
         this.id = nextId++;
-        this.location = location;
+        this.location = flag.getLocation();
         this.algorithm = algorithm;
-        this.owner = owner;
+        this.owner = flag.getOwner();
+        this.flag = flag;
     }
 
     public int getId() {
@@ -34,20 +39,18 @@ public class Bot implements IBot {
         return algorithm;
     }
 
+
     public IAlgorithm setAlgorithm(int choice, Map map) {
         switch (choice) {
             case 1:
                 return algorithm = new RandomPath(map);
-
             case 2:
-                //return algorithm = new Algorithm.MoveByLongestPath(map);
-
+                return algorithm = new LongestPath(map);
             case 3:
-                //return algorithm = new Algorithm.MoveToBlock(map);
-
+                return algorithm = new BlockPath(map);
             default:
-                //return algorithm = new Algorithm.MoveByShortestPath(map);
-                return null;
+                return algorithm = new ShortestPath(map);
+
         }
     }
 
