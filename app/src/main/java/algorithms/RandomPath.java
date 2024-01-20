@@ -7,18 +7,15 @@ import game.Map;
 import interfaces.IAlgorithm;
 import structures.NetworkEnhance;
 
-public class LongestPath implements IAlgorithm {
+public class RandomPath implements IAlgorithm {
     private NetworkEnhance<Location> graph;
     private OrderedLinkedList<Flag> flags;
-
-    public LongestPath(Map map) {
+    public RandomPath(Map map) {
         this.graph = map.getGraphMap();
         this.flags = map.getFlagLocations();
     }
-
     @Override
     public Location move(Map map) {
         return null;
     }
-
 }

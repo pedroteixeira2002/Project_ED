@@ -7,11 +7,10 @@ import game.Map;
 import interfaces.IAlgorithm;
 import structures.NetworkEnhance;
 
-public class LongestPath implements IAlgorithm {
+public class BlockPath implements IAlgorithm {
     private NetworkEnhance<Location> graph;
     private OrderedLinkedList<Flag> flags;
-
-    public LongestPath(Map map) {
+    public BlockPath(Map map) {
         this.graph = map.getGraphMap();
         this.flags = map.getFlagLocations();
     }
@@ -20,5 +19,4 @@ public class LongestPath implements IAlgorithm {
     public Location move(Map map) {
         return null;
     }
-
 }
