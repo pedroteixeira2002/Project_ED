@@ -1,13 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
-class Game
+
 class Map
 class Player
 class Bot
 class Game
-class Algorithm
+class Algorithms
 class Flag
-
 
 class Game {
     - map : Map                    // map of the game
@@ -45,7 +44,7 @@ class Flag {
 class Player {
     - id : int                         // unique id of the player
     - name : String                    // name of the player
-    - bots : OrderedLinkedList<Bot>  // list of bots controlled by the player
+    - bots : UnorderedLinkedList<Bot>  // list of bots controlled by the player
     + getters() and setters()
 }
 class Bot {
@@ -54,19 +53,10 @@ class Bot {
     - location : Location              // location of the bot on the map
     + getters() and setters()
 
-class Algorithm{
-    class MoveToBlock{
-        + move() : void
-    }
-    class MoveByShortestPath{
-    + move() : void
-    }
-    class MoveByRandomPath{
-    + move : void
-    }
-    class MoveByLongestPath{
-    + move() : void
-    }
+}
+
+class Algorithms {
+    + move() : Location
 }
 
 
