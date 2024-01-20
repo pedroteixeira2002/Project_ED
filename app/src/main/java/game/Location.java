@@ -24,4 +24,11 @@ public class Location {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+
+    @Override
+    public String toString() {
+       String str = "X: " + this.posX + " Y: " + this.posY;
+
+       return str;
+    }
 }
