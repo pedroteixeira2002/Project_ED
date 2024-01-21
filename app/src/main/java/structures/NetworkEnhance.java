@@ -4,7 +4,11 @@ import collections.graphs.Network;
 
 public class NetworkEnhance<T> extends Network<T> {
 
+
+    private double[][] adjMatrix;
+
     public NetworkEnhance() {
+
         super();
     }
 
@@ -15,4 +19,5 @@ public class NetworkEnhance<T> extends Network<T> {
             return null;
         }
     }
+
 }

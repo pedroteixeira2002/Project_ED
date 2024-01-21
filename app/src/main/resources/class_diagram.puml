@@ -5,15 +5,15 @@ class Map
 class Player
 class Bot
 class Game
-class Algorithms
+class Algorithm
 class Flag
 
 class Game {
-    - map : Map                    // map of the game
-    - player1 : Player             // player 1 of the game
-    - player2 : Player             // player 2 of the game
-    - currentPlayer : Player       // current player of the game
-    - round : int                  // current round of the game
+    - map : Map
+    - player1 : Player
+    - player2 : Player
+    - currentPlayer : Player
+    - round : int
     + getters() and setters()
     + startGame() : void
     + checkGameOver() : boolean
@@ -21,41 +21,40 @@ class Game {
 }
 
 class Map {
-    - graphMap : Newtork<Location>                   // graph representing the map
-    - flagLocations : UnorderedLinkedList<Location>  // list of flag locations(vertices) on the map
+    - graphMap : NetworkEnhanced<Location>
+    - flagLocations : OrderedLinkedList<Location>
     + generateMap() : Map
     + importMap() : void
     + exportMap() : void
 }
 
-'Classe Correta Não Alterar'
+
 class Location {
-    - positionX : int                 // x coordinate of the location on the map
-    - positionY : int                 // y coordinate of the location on the map
+    - positionX : int
+    - positionY : int
     + getters() and setters()
 }
-'Classe Correta Não Alterar'
 class Flag {
-    - location : Location              // location of the flag on the map
-    - owner : Player                   // player who owns the flag
+    - location : Location
+    - owner : Player
     + getters() and setters()
 }
 
 class Player {
-    - id : int                         // unique id of the player
-    - name : String                    // name of the player
-    - bots : UnorderedLinkedList<Bot>  // list of bots controlled by the player
+    - id : int
+    - name : String
+    - bots : UnorderedLinkedList<Bot>
     + getters() and setters()
 }
 class Bot {
-    - id : int                         // unique id of the bot
-    - algorithm : Algorithm            // algorithm used by the bot to move
-    - location : Location              // location of the bot on the map
+    - id : int
+    - algorithm : Algorithm
+    - location : Location
     + getters() and setters()
 
 }
 
-class Algorithms {
+class Algorithm {
     + move() : Location
 }
 

@@ -9,19 +9,13 @@ import java.util.Random;
 
 public class Map implements IMap {
     private NetworkEnhance<Location> graphMap;
-    private OrderedLinkedList<Flag> flagLocations;
 
     public Map() {
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new OrderedLinkedList<>();
     }
 
     public NetworkEnhance<Location> getGraphMap() {
         return graphMap;
-    }
-
-    public OrderedLinkedList<Flag> getFlagLocations() {
-        return flagLocations;
     }
 
     /**
@@ -33,8 +27,6 @@ public class Map implements IMap {
     public NetworkEnhance<Location> generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new OrderedLinkedList<>();
-
 
         // Check if edgeDensity is in the correct range
         if (edgeDensity < 0.01 || edgeDensity > 1.00) {

@@ -1,7 +1,6 @@
 package game;
 
 import algorithms.BlockPath;
-import algorithms.LongestPath;
 import algorithms.RandomPath;
 import algorithms.ShortestPath;
 import interfaces.IAlgorithm;
@@ -10,18 +9,20 @@ import interfaces.IBot;
 public class Bot implements IBot {
     private static int nextId = 0;
     private int id;
-    private Flag flag;
-    private Location location;
     private IAlgorithm algorithm;
+    private Location location;
     private Player owner;
 
-    public Bot(IAlgorithm algorithm, Flag flag) {
+    public Bot(IAlgorithm algorithm, Game game) {
         this.id = nextId++;
-        this.location = flag.getLocation();
+        this.owner = getMe(game);
         this.algorithm = algorithm;
-        this.owner = flag.getOwner();
-        this.flag = flag;
     }
+
+    public Player getOwner() {
+        return owner;
+    }
+
 
     public int getId() {
         return id;
@@ -40,20 +41,25 @@ public class Bot implements IBot {
     }
 
 
-    public IAlgorithm setAlgorithm(int choice, Map map) {
+    public IAlgorithm setAlgorithm(int choice, Game game) {
         switch (choice) {
             case 1:
-                return algorithm = new RandomPath(map);
-            case 2:
-                return algorithm = new LongestPath(map);
+                return algorithm = new RandomPath(game);
             case 3:
-                return algorithm = new BlockPath(map);
+                return algorithm = new BlockPath(game);
             default:
-                return algorithm = new ShortestPath(map);
+                return algorithm = new ShortestPath(game);
 
         }
     }
 
+    private Player getMe(Game game) {
+        if (game.getRound() % 2 == 0) {
+            return game.getPlayer1();
+        } else {
+            return game.getPlayer2();
+        }
+    }
 
 
     @Override
