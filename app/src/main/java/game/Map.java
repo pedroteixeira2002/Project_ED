@@ -50,6 +50,8 @@ public class Map implements IMap {
             this.graphMap.addVertex(location);
         }
 
+        // Create a minimum spanning tree using the mstNetwork method
+        graphMap.mstNetwork();
 
         // Connect locations based on edge density
         int maxEdges = (int) (numLocations * (numLocations - 1) * edgeDensity);
@@ -75,6 +77,7 @@ public class Map implements IMap {
         return this.graphMap;
     }
 
+
     /**
      * Get a random location in the map
      * @return a random location in the map
@@ -84,7 +87,5 @@ public class Map implements IMap {
         int randomIndex = random.nextInt(this.graphMap.size());
 
         return this.graphMap.getVertex(randomIndex);
-
     }
-
 }
