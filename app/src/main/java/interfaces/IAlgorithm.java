@@ -1,8 +1,9 @@
 package interfaces;
 
+import game.Game;
 import game.Location;
 import game.Map;
 
 public interface IAlgorithm {
-    Location move(Map map);
+    Location move(Game game);
 }

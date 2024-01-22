@@ -12,21 +12,15 @@ public class Map implements IMap {
     private static int nextId = 1;
     private int id;
     private NetworkEnhance<Location> graphMap;
-    private OrderedLinkedList<Flag> flagLocations;
 
 
     public Map() {
         this.id = nextId++;
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new OrderedLinkedList<>();
     }
 
     public NetworkEnhance<Location> getGraphMap() {
         return graphMap;
-    }
-
-    public OrderedLinkedList<Flag> getFlagLocations() {
-        return flagLocations;
     }
 
     /**
@@ -38,8 +32,6 @@ public class Map implements IMap {
     public NetworkEnhance<Location> generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
-        this.flagLocations = new OrderedLinkedList<>();
-
 
         // Check if edgeDensity is in the correct range
         if (edgeDensity < 0.01 || edgeDensity > 1.00) {

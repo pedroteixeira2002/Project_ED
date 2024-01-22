@@ -17,19 +17,33 @@ public class Player implements IPlayer {
         this.flag = null;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
+    public Location getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Location flag) {
+        this.flag = flag;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+
     public OrderedLinkedList<Bot> getListBots() {
         return listBots;
     }
 
-    public Location getFlag() {
-        return flag;
+
+    public void setListBots(OrderedLinkedList<Bot> listBots) {
+        this.listBots = listBots;
     }
 }
