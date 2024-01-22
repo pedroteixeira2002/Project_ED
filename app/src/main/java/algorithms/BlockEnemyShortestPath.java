@@ -7,9 +7,8 @@ import structures.NetworkEnhance;
 
 import java.util.Iterator;
 
-public class ShortestPath extends Algorithm implements IAlgorithm {
-
-    public ShortestPath(Game game) {
+public class BlockEnemyShortestPath extends Algorithm implements IAlgorithm {
+    public BlockEnemyShortestPath(Game game) {
         super(game);
     }
 
@@ -17,22 +16,16 @@ public class ShortestPath extends Algorithm implements IAlgorithm {
     public Location move(Game game) {
         NetworkEnhance<Location> tempMap = super.getMap();
         Iterator<Location> list = tempMap.iteratorShortestPath
-                (super.getMyLocation(), super.getOpponentFlag());
+                (super.getOpponentFlag(), super.getMyLocation());
 
         botInTheWay(tempMap, list);
 
         double shortestPathWeight = tempMap.shortestPathWeight
-                (super.getMyLocation(), super.getOpponentFlag());
-        System.out.println("Actual Shortest Path Weight: " + shortestPathWeight);
+                (super.getOpponentFlag(), super.getMyLocation());
+        System.out.println("Actual Enemy Shortest Path Weight : " + shortestPathWeight);
 
         setMyLocation(list.next());
 
         return getMyLocation();
-    }
-
-    @Override
-    public String toString() {
-        return "This Algorithm uses the shortest path to the flag. " +
-                "The bot will use the shortest path to the flag and move there.";
     }
 }

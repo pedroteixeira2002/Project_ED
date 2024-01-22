@@ -1,6 +1,6 @@
 package game;
 
-import algorithms.BlockPath;
+import algorithms.BlockClosestEnemyBot;
 import algorithms.RandomPath;
 import algorithms.ShortestPath;
 import interfaces.IAlgorithm;
@@ -46,7 +46,7 @@ public class Bot implements IBot {
             case 1:
                 return algorithm = new RandomPath(game);
             case 3:
-                return algorithm = new BlockPath(game);
+                return algorithm = new BlockClosestEnemyBot(game);
             default:
                 return algorithm = new ShortestPath(game);
 
