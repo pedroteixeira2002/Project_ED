@@ -1,57 +1,60 @@
 package algorithms;
 
-import collections.lists.OrderedLinkedList;
-import game.*;
+import game.Game;
+import game.Location;
 import interfaces.IAlgorithm;
 import structures.NetworkEnhance;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
-public class RandomPath implements IAlgorithm {
-    private NetworkEnhance<Location> graph;
-    private OrderedLinkedList<Bot> opponentBots;
-    private Location opponentFlag;
-    private Location myFlag;
+public class RandomPath extends Algorithm implements IAlgorithm {
+    Location location;
 
     public RandomPath(Game game) {
-        this.graph = game.getMap().getGraphMap();
-        this.opponentBots = getOpponent(game).getListBots();
-        this.opponentFlag = getOpponent(game).getFlag();
-        this.myFlag = getMe(game).getFlag();
-    }
-/*
-    public void move(Bot bot, Map map) {
+        super(game);
 
-        // Implementação do movimento aleatório
-        Random random = new Random();
-        Location currentLocation = bot.getLocation();
-
-        // Obtém os vizinhos da localização atual do bot
-        var neighbors = map.getGraphMap().getNeighbors(currentLocation);
-
-        if (!neighbors.isEmpty()) {
-            // Escolhe aleatoriamente um vizinho para se mover
-            Location randomNeighbor = neighbors.remove(random.nextInt(neighbors.size()));
-            bot.setLocation(randomNeighbor);
-        }
-    }
-*/
-
-    private Player getOpponent(Game game) {
-        if (game.getRound() % 2 == 0)
-            return game.getPlayer2();
-        else return game.getPlayer1();
     }
 
-    private Player getMe(Game game) {
-        if (game.getRound() % 2 == 0) {
-            return game.getPlayer1();
-        } else {
-            return game.getPlayer2();
-        }
-    }
     @Override
-    public Location move() {
-        return null;
+    public Location move(Game game) {
+        NetworkEnhance<Location> tempMap = this.getMap();
+
+        Location randomLocation = randomLocation(tempMap);
+
+        setMyLocation(randomLocation);
+
+        return getMyLocation();
     }
+
+    private Location randomLocation(NetworkEnhance<Location> map) {
+        Object[] vertices = map.getVertices();
+        if (vertices == null || vertices.length == 0)
+            throw new RuntimeException("There are no locations in the map");
+
+        List<Location> verticesList = Arrays.asList(Arrays.copyOf(vertices, vertices.length, Location[].class));
+
+        Iterator<Location> iterator = map.iteratorDFS(verticesList.get(0));
+
+
+        Random random = new Random();
+        int steps = random.nextInt(verticesList.size());
+
+        for (int i = 0; i < steps && iterator.hasNext(); i++) {
+            iterator.next();
+        }
+        return iterator.hasNext() ? iterator.next() : verticesList.get(0);
+    }
+
+    @Override
+    public String toString() {
+        return "\nThis Algorithm don´t follow a particular set of rules. " +
+                "\nThe bot will randomly move in the map, without the intention to achieve the flag." +
+                "\nThis algorithm can be considered a defense method, since it can block the enemy moves." +
+                " On the other hand, it can also block your moves." +
+                " To Avoid this, try to set this bot as the last one";
+    }
+
 }

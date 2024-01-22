@@ -5,5 +5,7 @@ import game.Location;
 import game.Map;
 
 public interface IAlgorithm {
-    Location move(Game game);
+
+    Location move (Game game);
+
 }

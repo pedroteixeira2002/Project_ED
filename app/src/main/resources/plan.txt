@@ -31,7 +31,7 @@ ________________________________________________________________________________
 | 6.1 Os bots movem-se um de cada vez (bot1, bot2, bot3, etc)                    |
 |    6.1.1 Quando não há mais bots volta ao primeiro(Na quarta ronda, deve voltar|
 |ao bot 1.                                                                       |
-| 7.1 Um bot não pode estar na mesma localização de outro, exceto se for a       |
+| 7.1 Um bot não pode estar na mesma localização de outro,(done)| exceto se for a       |
 |localização de uma bandeira .                                                   |
 | 8. Deverá ser possível acompanhar visualmente as movimentações realizadas      |
 | 9. Deverão ser criados pelo menos 3 algarismos de movimentação dos bots        |
