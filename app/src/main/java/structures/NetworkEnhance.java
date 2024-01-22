@@ -6,12 +6,8 @@ import game.Location;
 
 public class NetworkEnhance<T> extends Network<T> {
 
-<<<<<<< HEAD
     private Object[][] adjMatrix;
-=======
 
-    private double[][] adjMatrix;
->>>>>>> 79a7d39c8050dff34ebdcb365900bb7519bfc011
 
     public NetworkEnhance() {
 
@@ -31,7 +27,6 @@ public class NetworkEnhance<T> extends Network<T> {
         }
     }
 
-<<<<<<< HEAD
     public void expandVertexList() {
         T[] largerVertices = (T[]) new Object[this.vertices.length * 2];
 
@@ -81,6 +76,3 @@ public class NetworkEnhance<T> extends Network<T> {
 
 
 }
-=======
-}
->>>>>>> 79a7d39c8050dff34ebdcb365900bb7519bfc011

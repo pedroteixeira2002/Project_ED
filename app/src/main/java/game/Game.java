@@ -18,8 +18,8 @@ public class Game {
         this.turn = player1;
         this.round = 0;
     }
-
-    public Game() {
+    public void newGame(){
+        System.out.println();
 
     }
 

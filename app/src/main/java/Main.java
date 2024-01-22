@@ -42,7 +42,7 @@ public class Main {
         graph.addEdge("FA", "F", "A").setAttribute("ui.label", "FA");
 
         // Visualize o grafo
-        Viewer viewer = graph.display();
+        Viewer viewer = graph.Display();
          */
 
         Map gameMap = new Map();
