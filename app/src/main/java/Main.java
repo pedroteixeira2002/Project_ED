@@ -1,8 +1,6 @@
 import collections.graphs.Network;
 import game.Map;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.view.Viewer;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,11 +18,11 @@ public class Main {
         graph.addEdge("C", "D", 4);
 
         System.out.println(graph);
-         */
+
         /*
         // Defina a propriedade do sistema para o pacote de UI adequado
         System.setProperty("org.graphstream.ui", "javafx");
-
+        /*
         // Crie um grafo simples
         Graph graph = new SingleGraph("MeuGrafo");
 
@@ -48,6 +46,11 @@ public class Main {
          */
 
         Map gameMap = new Map();
+        gameMap.generateMap(13, true, 0.5);
+
+        Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
+
+        System.out.println(gameMap);
 
     }
 }

@@ -5,13 +5,18 @@ import interfaces.IMap;
 import structures.NetworkEnhance;
 
 
+import java.util.Iterator;
 import java.util.Random;
 
 public class Map implements IMap {
+    private static int nextId = 1;
+    private int id;
     private NetworkEnhance<Location> graphMap;
     private OrderedLinkedList<Flag> flagLocations;
 
+
     public Map() {
+        this.id = nextId++;
         this.graphMap = new NetworkEnhance<>();
         this.flagLocations = new OrderedLinkedList<>();
     }
@@ -52,6 +57,7 @@ public class Map implements IMap {
 
         // Create a minimum spanning tree using the mstNetwork method
         graphMap.mstNetwork();
+        //this.graphMap = (NetworkEnhance<Location>) graphMap.mstNetwork();
 
         // Connect locations based on edge density
         int maxEdges = (int) (numLocations * (numLocations - 1) * edgeDensity);
@@ -73,10 +79,20 @@ public class Map implements IMap {
             }
         }
 
+        // Atualize esta linha para armazenar o ID do mapa
+        System.out.println("Mapa gerado com ID: " + this.id);
+
         // Return the generated map
         return this.graphMap;
     }
 
+    /**
+     * Get the map id
+     * @return
+     */
+    public int getId() {
+        return id;
+    }
 
     /**
      * Get a random location in the map
@@ -87,5 +103,16 @@ public class Map implements IMap {
         int randomIndex = random.nextInt(this.graphMap.size());
 
         return this.graphMap.getVertex(randomIndex);
+    }
+
+    @Override
+    public String toString() {
+        String str = "Mapa " + this.id + ":\n";
+        str += "Locais:\n";
+        for (int i = 0; i < this.graphMap.size(); i++) {
+            str += "\t" + this.graphMap.getVertex(i) + "\n";
+        }
+
+        return str;
     }
 }

@@ -27,8 +27,7 @@ public class Location {
 
     @Override
     public String toString() {
-       String str = "X: " + this.posX + " Y: " + this.posY;
-
+       String str = "X: " + this.posX + "\tY: " + this.posY;
        return str;
     }
 }

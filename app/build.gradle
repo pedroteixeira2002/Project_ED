@@ -27,14 +27,15 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:32.1.1-jre'
 
-    // Use Gson to parse JSON into Java objects.
-    implementation 'com.google.code.gson:gson:2.10.1'
+    // Dependency for json simple.
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     // Data Structures
     implementation files('libs/Data-Structures.jar')
     // GraphStream
     implementation files('libs/gs-core-1.3.jar')
 
     implementation 'org.graphstream:gs-core:1.3'
+
     implementation 'org.graphstream:gs-ui:1.3'
 
 }
