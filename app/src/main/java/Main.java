@@ -1,9 +1,39 @@
 import collections.graphs.Network;
+import datapersistence.FileIO;
+import game.ListMap;
 import game.Map;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
+
 import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
+        ListMap listMap = new ListMap();
+        Map gameMap1 = new Map();
+        listMap.addMap(gameMap1);
+        Map gameMap2 = new Map();
+        listMap.addMap(gameMap2);
+        Map gameMap3 = new Map();
+        listMap.addMap(gameMap3);
+
+        gameMap1.generateMap(20, true, 0.5);
+        gameMap2.generateMap(15, true, 0.7);
+        gameMap3.generateMap(10, false, 0.9);
+
+        //Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
+
+        for (Map map : listMap.getAllMaps()) {
+            System.out.println(map);
+        }
+
+        FileIO fileIO = new FileIO();
+        fileIO.exportGraphToJSON(listMap);
+
+        //fileIO.importMapFromJson(2, listMap);
+
+
         /*
         Network<String> graph = new Network<String>();
 
@@ -18,11 +48,10 @@ public class Main {
         graph.addEdge("C", "D", 4);
 
         System.out.println(graph);
-
         /*
         // Defina a propriedade do sistema para o pacote de UI adequado
         System.setProperty("org.graphstream.ui", "javafx");
-        /*
+
         // Crie um grafo simples
         Graph graph = new SingleGraph("MeuGrafo");
 
@@ -43,14 +72,6 @@ public class Main {
 
         // Visualize o grafo
         Viewer viewer = graph.display();
-         */
-
-        Map gameMap = new Map();
-        gameMap.generateMap(13, true, 0.5);
-
-        Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
-
-        System.out.println(gameMap);
-
+        */
     }
 }

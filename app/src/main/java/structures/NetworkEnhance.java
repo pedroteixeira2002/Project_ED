@@ -5,13 +5,7 @@ import game.Location;
 
 
 public class NetworkEnhance<T> extends Network<T> {
-
-<<<<<<< HEAD
     private Object[][] adjMatrix;
-=======
-
-    private double[][] adjMatrix;
->>>>>>> 79a7d39c8050dff34ebdcb365900bb7519bfc011
 
     public NetworkEnhance() {
 
@@ -30,18 +24,6 @@ public class NetworkEnhance<T> extends Network<T> {
             return null;
         }
     }
-
-<<<<<<< HEAD
-    public void expandVertexList() {
-        T[] largerVertices = (T[]) new Object[this.vertices.length * 2];
-
-        for (int i = 0; i < numVertices; i++) {
-            largerVertices[i] = vertices[i];
-        }
-
-        vertices = largerVertices;
-    }
-
 
     public Location[] getNeighbors(T from) {
         int fromIndex = getIndex(from);
@@ -78,9 +60,13 @@ public class NetworkEnhance<T> extends Network<T> {
         return this.vertices;
     }
 
+    public boolean containsEdge(T from, T to) {
+        int fromIndex = getIndex(from);
+        int toIndex = getIndex(to);
+        if (fromIndex == -1 || toIndex == -1) {
+            return false;
+        }
 
-
+        return adjMatrix[fromIndex][toIndex] != null;
+    }
 }
-=======
-}
->>>>>>> 79a7d39c8050dff34ebdcb365900bb7519bfc011

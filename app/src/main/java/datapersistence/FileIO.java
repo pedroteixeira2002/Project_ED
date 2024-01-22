@@ -1,18 +1,23 @@
 package datapersistence;
 
+import game.ListMap;
 import game.Location;
+import game.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import scala.util.parsing.json.JSON;
 import structures.NetworkEnhance;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
 public class FileIO {
-    private static final String directory = "app/maps/maps.json";
+    private static final String directory = "app\\src\\main\\java\\database\\maps.json";
 
     public FileIO() {
 
@@ -20,43 +25,20 @@ public class FileIO {
 
     /**
      * Export the map to a json file
-     * @param graph
+     *
      */
-    public void exportGraphToJSON(NetworkEnhance<Location> graph) {
+    public void exportGraphToJSON(ListMap maps) {
         try (FileWriter writer = new FileWriter(directory)) {
-            JSONObject jsonGraph = new JSONObject();
+            JSONArray mapsArray = new JSONArray();
 
-            // Export vertices
-            JSONArray vertices = new JSONArray();
-            Iterator<Location> vertexIterator = graph.iteratorDFS(graph.getVertex(0));
-            while (vertexIterator.hasNext()) {
-                Location current = vertexIterator.next();
-                JSONObject vertex = new JSONObject();
-                vertex.put("posX", current.getPosX());
-                vertex.put("posY", current.getPosY());
-                vertices.add(vertex);
-            }
-            jsonGraph.put("vertices", vertices);
-
-            /*
-            // Export edges
-            JSONArray edges = new JSONArray();
-            vertexIterator = graph.iteratorDFS(graph.getVertex(0));
-            while (vertexIterator.hasNext()) {
-                Location current = vertexIterator.next();
-                Iterator<Location> neighborIterator = Arrays.stream(graph.getNeighbors(current)).iterator();
-                while (neighborIterator.hasNext()) {
-                    Location neighbor = neighborIterator.next();
-                    JSONObject edge = new JSONObject();
-                    edge.put("source", current.getId());
-                    edge.put("target", neighbor.getId());
-                    edges.add(edge);
-                }
+            for (Map map : maps.getAllMaps()) {
+                JSONObject jsonMap = new JSONObject();
+                jsonMap.put("Map ID", map.getId());
+                jsonMap.put("Graph Map", map.getGraphMap().toString()); // Assuming toString() provides the necessary details
+                mapsArray.add(jsonMap);
             }
 
-            jsonGraph.put("edges", edges);
-            */
-            JSONValue.writeJSONString(jsonGraph, writer);
+            JSONValue.writeJSONString(maps, writer);
             System.out.println("Exportação concluída com sucesso.");
         } catch (IOException e) {
             System.err.println("Erro ao exportar o grafo para JSON: " + e.getMessage());
@@ -64,7 +46,31 @@ public class FileIO {
     }
 
 
-    public void importMapFromJson(int mapId) {
-        return;
-    }
+    /**
+     * Import the map from a json file by map id
+     * @param mapId ID of the map to import
+     * @param maps ListMap to add the imported map
+     */
+    /*
+    public void importMapFromJson(int mapId, ListMap maps) {
+        try (FileReader reader = new FileReader(directory)) {
+            JSONArray mapsArray = (JSONArray) JSONValue.parse(reader);
+
+            for (Object map : mapsArray) {
+                JSONObject jsonMap = (JSONObject) map;
+                long jsonMapId = (long) jsonMap.get("Map ID");
+
+                if (jsonMapId == mapId) {
+                    Map parsedMap = Map.parseGraphFromJSON((JSONArray) jsonMap.get("Graph Map"));
+                    maps.addMap(parsedMap);
+                    System.out.println("Mapa com o ID " + mapId + " importado com sucesso.");
+                    return;
+                }
+            }
+
+            System.out.println("Mapa com o ID " + mapId + " não encontrado no arquivo JSON.");
+        } catch (IOException e) {
+            System.err.println("Erro ao importar o grafo da base de dados: " + e.getMessage());
+        }
+     */
 }

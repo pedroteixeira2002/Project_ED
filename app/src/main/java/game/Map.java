@@ -1,23 +1,22 @@
 package game;
 
-import collections.lists.OrderedLinkedList;
 import interfaces.IMap;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import structures.NetworkEnhance;
 
-
-import java.util.Iterator;
 import java.util.Random;
 
-public class Map implements IMap {
+public class Map implements IMap, Comparable<Map> {
     private static int nextId = 1;
     private int id;
     private NetworkEnhance<Location> graphMap;
-
 
     public Map() {
         this.id = nextId++;
         this.graphMap = new NetworkEnhance<>();
     }
+
 
     public NetworkEnhance<Location> getGraphMap() {
         return graphMap;
@@ -29,7 +28,7 @@ public class Map implements IMap {
      * @param bidirectional
      * @param edgeDensity
      */
-    public NetworkEnhance<Location> generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
+    public Map generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
 
@@ -47,14 +46,36 @@ public class Map implements IMap {
             this.graphMap.addVertex(location);
         }
 
-        // Create a minimum spanning tree using the mstNetwork method
-        graphMap.mstNetwork();
-        //this.graphMap = (NetworkEnhance<Location>) graphMap.mstNetwork();
 
         // Connect locations based on edge density
         int maxEdges = (int) (numLocations * (numLocations - 1) * edgeDensity);
         Random random = new Random();
 
+
+        while (!graphMap.isConnected()) {
+            Location from = getRandomLocation();
+            Location to = getRandomLocation();
+
+            if (from != null && to != null && !from.equals(to) && !graphMap.containsEdge(from, to)) {
+                double weight = 1 + random.nextInt(15); // Distância aleatória entre 1 e 15 quilômetros (peso da aresta)
+
+                graphMap.addEdge(from, to, weight);
+
+                if (bidirectional) {
+                    // If bidirectional, add the edge in the opposite direction
+                    graphMap.addEdge(to, from, weight);
+                }
+            }
+        }
+
+        // Verifica se o grafo se tornou conexo após o loop
+        if (graphMap.isConnected()) {
+            System.out.println("O grafo é conexo!");
+        } else {
+            System.out.println("O grafo não é conexo!");
+        }
+
+        /*
         for (int i = 0; i < maxEdges; i++) {
             Location from = getRandomLocation();
             Location to = getRandomLocation();
@@ -70,13 +91,16 @@ public class Map implements IMap {
                 }
             }
         }
+        */
 
         // Atualize esta linha para armazenar o ID do mapa
         System.out.println("Mapa gerado com ID: " + this.id);
 
+
         // Return the generated map
-        return this.graphMap;
+        return this;
     }
+
 
     /**
      * Get the map id
@@ -84,6 +108,10 @@ public class Map implements IMap {
      */
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -99,12 +127,21 @@ public class Map implements IMap {
 
     @Override
     public String toString() {
-        String str = "Mapa " + this.id + ":\n";
+        String str = "\nMap Id: " + this.id + ":\n";
+        str += this.graphMap.toString() + "\n";
+
+        /*
         str += "Locais:\n";
         for (int i = 0; i < this.graphMap.size(); i++) {
             str += "\t" + this.graphMap.getVertex(i) + "\n";
         }
-
+        */
         return str;
     }
+
+    @Override
+    public int compareTo(Map o) {
+        return this.id - o.id;
+    }
+
 }
