@@ -75,19 +75,6 @@ public class FileIO {
      */
     public ListMap importMapsFromJson(String directory) {
         ListMap maps = new ListMap();
-        try (FileReader reader = new FileReader(directory)) {
-            JSONArray mapsArray = (JSONArray) JSONValue.parse(reader);
-
-            for (Object mapObject : mapsArray) {
-                JSONObject mapJson = (JSONObject) mapObject;
-                Map map = parseMap(mapJson);
-                maps.addMap(map);
-            }
-
-            System.out.println("Importação concluída com sucesso.");
-        } catch (IOException e) {
-            System.err.println("Erro ao importar a lista de mapas da base de dados: " + e.getMessage());
-        }
 
         return maps;
     }

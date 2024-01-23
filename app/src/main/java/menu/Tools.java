@@ -34,7 +34,7 @@ class   Tools  {
         return aux.charAt(0);
 
     }
-    public static double getReal() throws IOException {
+    public static double getDouble() throws IOException {
         String aux = GetString();
         return Double.parseDouble(aux);
     }

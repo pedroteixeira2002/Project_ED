@@ -1,15 +1,18 @@
-import collections.graphs.Network;
 import datapersistence.FileIO;
+import game.Game;
 import game.ListMap;
 import game.Map;
+import game.Player;
+import menu.Menu;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
 
-import java.util.Iterator;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+
         ListMap listMap = new ListMap();
         Map gameMap1 = new Map();
         listMap.addMap(gameMap1);
@@ -55,6 +58,7 @@ public class Main {
         graph.addEdge("C", "D", 4);
 
         System.out.println(graph);
+ */
         /*
         // Defina a propriedade do sistema para o pacote de UI adequado
         System.setProperty("org.graphstream.ui", "javafx");
@@ -76,9 +80,5 @@ public class Main {
         graph.addEdge("DE", "D", "E").setAttribute("ui.label", "DE");
         graph.addEdge("EF", "E", "F").setAttribute("ui.label", "EF");
         graph.addEdge("FA", "F", "A").setAttribute("ui.label", "FA");
-
-        // Visualize o grafo
-        Viewer viewer = graph.Display();
-         */
     }
 }

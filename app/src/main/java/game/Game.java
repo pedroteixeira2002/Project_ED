@@ -1,5 +1,7 @@
 package game;
 
+import org.checkerframework.common.reflection.qual.NewInstance;
+
 public class Game {
     private Map map;
     private Player player1;
@@ -8,18 +10,25 @@ public class Game {
     private Location flag2;
     private Player turn;
     private int round;
-
-    public Game(Map map, Player player1, Player player2) {
+    public Game(Map map) {
         this.map = map;
-        this.player1 = player1;
-        this.player2 = player2;
+        this.player1 = null;
+        this.player2 = null;
+        this.flag1 = player1.getFlag();
+        this.flag2 = player2.getFlag();
+        this.turn = player1;
+        this.round = 0;
+    }
+    public Game() {
+        this.map = null;
+        this.player1 = null;
+        this.player2 = null;
         this.flag1 = player1.getFlag();
         this.flag2 = player2.getFlag();
         this.turn = player1;
         this.round = 0;
     }
     public void newGame(){
-        System.out.println();
 
     }
 
