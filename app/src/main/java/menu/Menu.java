@@ -25,23 +25,23 @@ public class Menu {
         }
     }
 
-    public static void NewMapMenu() throws IOException {
-
-
-    }
 
     public static void GameMenu(Game game, ListMap maps, FileIO io) throws IOException {
         Display.displayNewGameMenu();
         switch (Tools.GetInt()) {
-            case 1, default:
+            case 1:
                 System.out.println(game.getMap().generateMap
                         (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity()));
                 if (ReadInfo.saveMap() == true)
                     io.exportGraphToJSON(maps);
                 break;
             case 2:
-                //import function
-
+                String s = ReadInfo.getLocationJson();
+                System.out.println(io.importMapsFromJson(s));
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
         }
 
     }

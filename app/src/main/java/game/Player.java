@@ -9,12 +9,14 @@ public class Player implements IPlayer {
     private String name;
     private OrderedLinkedList<Bot> listBots;
     private Location flag;
+    private int iterationCount; // Iteration count for the player
 
     public Player(String name) {
         this.id = nextId++;
         this.name = name;
         this.listBots = new OrderedLinkedList<>();
         this.flag = null;
+        this.iterationCount = 0;
     }
 
     public void setName(String name) {
@@ -37,6 +39,17 @@ public class Player implements IPlayer {
         return id;
     }
 
+    public int getIterationCount() {
+        return iterationCount;
+    }
+
+    public void resetIterationCount() {
+        iterationCount = 0;
+    }
+
+    public void incrementIterationCount() {
+        iterationCount++;
+    }
 
     public OrderedLinkedList<Bot> getListBots() {
         return listBots;

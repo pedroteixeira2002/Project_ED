@@ -77,4 +77,44 @@ public class NetworkEnhance<T> extends Network<T> {
         }
         return adjMatrix[fromIndex][toIndex] != null;
     }
+
+    /**
+     * Converte o grafo em uma representação JSON
+     * @return
+     */
+    public String toJSON() {
+        String str = "{\n";
+        str += "\t\"vertices\": [\n";
+        for (int i = 0; i < this.numVertices; i++) {
+            str += "\t\t{\n";
+            str += "\t\t\t\"id\": " + i + ",\n";
+            str += "\t\t\t\"label\": \"" + this.vertices[i] + "\"\n";
+            str += "\t\t}";
+            if (i < this.numVertices - 1) {
+                str += ",";
+            }
+            str += "\n";
+        }
+        str += "\t],\n";
+        str += "\t\"edges\": [\n";
+        for (int i = 0; i < this.numVertices; i++) {
+            for (int j = 0; j < this.numVertices; j++) {
+                if (this.adjMatrix[i][j] != null) {
+                    str += "\t\t{\n";
+                    str += "\t\t\t\"from\": " + i + ",\n";
+                    str += "\t\t\t\"to\": " + j + ",\n";
+                    str += "\t\t\t\"label\": \"" + this.adjMatrix[i][j] + "\"\n";
+                    str += "\t\t}";
+                    if (i < this.numVertices - 1) {
+                        str += ",";
+                    }
+                    str += "\n";
+                }
+            }
+        }
+        str += "\t]\n";
+        str += "}\n";
+
+        return str;
+    }
 }
