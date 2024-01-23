@@ -1,5 +1,10 @@
 package game;
 
+import menu.ReadInfo;
+import menu.Tools;
+import structures.NetworkEnhance;
+
+import java.io.IOException;
 import java.util.Random;
 
 public class Game {
@@ -10,6 +15,7 @@ public class Game {
     private Location flag2;
     private Player turn;
     private int round;
+
     public Game(Map map) {
         this.map = map;
         this.player1 = null;
@@ -19,6 +25,7 @@ public class Game {
         this.turn = player1;
         this.round = 0;
     }
+
     public Game() {
         this.map = null;
         this.player1 = null;
@@ -32,12 +39,51 @@ public class Game {
     /**
      * Start a new game, setting the turn to any player and the round to 1
      */
-    public Player newGame(){
+    public Player newGame(NetworkEnhance<Location> map) throws IOException {
 
-        verify();
+        System.out.println("Insira o nome do jogador 1");
+        this.player1.setName(Tools.GetString());
+
+        System.out.println("Insira o nome do jogador 2");
+        this.player2.setName(Tools.GetString());
+
+        System.out.println(map.getVertices());
+
+        System.out.println("Insira a localização da sua bandeira: jogador 1");
+        Location l1 = new Location(ReadInfo.readCoordinate(), ReadInfo.readCoordinate());
+
+        System.out.println("Insira a localização da sua bandeira: jogador 2");
+        Location l2 = new Location(ReadInfo.readCoordinate(), ReadInfo.readCoordinate());
+
+        this.player1.setFlag(l1);
+        this.player2.setFlag(l2);
+
+        System.out.println("Player 1 - Adicione bots à lista");
+        int ans;
+        do {
+            Bot bot1 = null;
+            Bot bot2 = null;
+
+            bot1.setAlgorithm(this);
+            player1.getListBots().add(bot1);
+
+            bot2.setAlgorithm(this);
+            player2.getListBots().add(bot2);
+            System.out.println("Desejam adicionar outro bot?");
+            ans = Tools.readInt();
+        } while (ans == 1 );
+
+        do{
+            makeMove( );
+
+        }while(player1.getCurrentLocation().equals(flag2) || player2.getCurrentLocation().equals(flag1));
+
+        checkVictoryCondition(player1, player2);
+
         return null;
     }
-    public void verify(){
+
+    public void verify() {
         // Lógica para configurar os jogadores, bandeiras, etc.
         Random random = new Random();
         // Gera um número aleatório (0 ou 1) para decidir qual jogador começa
@@ -55,14 +101,14 @@ public class Game {
     /**
      * Makes a move, moving the current player's bot to a new location.
      * After the move, updates the turn, round and verify if all bots about player .
-     * @param movingbot The bot being moved. (que está sendo movido)
-     * @param newLocation New location for the bot
+     *
+     * @param movingbot   The bot being moved. (que está sendo movido)
      */
-    public void makeMove(Bot movingbot, Location newLocation){
+    public void makeMove(Bot movingbot) {
         // Move o bot para a nova localização se o movimento for válido
-        movingbot.getAlgorithm().move(this);
+            this.player1.setCurrentLocation(movingbot.getAlgorithm().move(this));
         // Verifica se a jogada resultou na vitória
-        if (checkVictoryCondition(turn, turn == player1 ? player2 : player1)){ // Verifica se o jogador atual é um dos
+        if (checkVictoryCondition(turn, turn == player1 ? player2 : player1)) { // Verifica se o jogador atual é um dos
             // jogadores e retorna o outro jogador
             System.out.println("Vitória do jogador " + turn.getName());
         } else {
@@ -86,6 +132,7 @@ public class Game {
 
     /**
      * This method checks if the victory condition is met
+     *
      * @return true if the victory condition is met, false otherwise
      */
     private boolean checkVictoryCondition(Player currentPlayer, Player opponentPlayer) {
@@ -119,7 +166,8 @@ public class Game {
 
     /**
      * This method checks if two locations are the same
-      * @param location1
+     *
+     * @param location1
      * @param location2
      * @return
      */
@@ -130,6 +178,7 @@ public class Game {
     /**
      * This method checks if the new location is valid and moves the bot
      * otheriwise
+     *
      * @param bot
      * @param newLocation
      */
@@ -162,7 +211,7 @@ public class Game {
         return true; // Movimento válido
     }
 
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
     public Map getMap() {
         return map;
     }

@@ -8,6 +8,7 @@ public class Player implements IPlayer {
     private int id;
     private String name;
     private OrderedLinkedList<Bot> listBots;
+    private Location currentLocation;
     private Location flag;
     private int iterationCount; // Iteration count for the player
 
@@ -17,6 +18,14 @@ public class Player implements IPlayer {
         this.listBots = new OrderedLinkedList<>();
         this.flag = null;
         this.iterationCount = 0;
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     public void setName(String name) {

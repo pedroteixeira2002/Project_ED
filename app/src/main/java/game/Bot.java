@@ -5,6 +5,9 @@ import algorithms.RandomPath;
 import algorithms.ShortestPath;
 import interfaces.IAlgorithm;
 import interfaces.IBot;
+import menu.Tools;
+
+import java.io.IOException;
 
 public class Bot implements IBot {
     private static int nextId = 0;
@@ -41,15 +44,14 @@ public class Bot implements IBot {
     }
 
 
-    public IAlgorithm setAlgorithm(int choice, Game game) {
-        switch (choice) {
+    public IAlgorithm setAlgorithm(Game game) throws IOException {
+        switch (Tools.GetInt()) {
             case 1:
                 return algorithm = new RandomPath(game);
             case 3:
                 return algorithm = new BlockClosestEnemyBot(game);
             default:
                 return algorithm = new ShortestPath(game);
-
         }
     }
 

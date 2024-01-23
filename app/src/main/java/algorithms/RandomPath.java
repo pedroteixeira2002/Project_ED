@@ -1,5 +1,6 @@
 package algorithms;
 
+import com.sun.jdi.event.MethodExitEvent;
 import game.Game;
 import game.Location;
 import interfaces.IAlgorithm;
@@ -27,6 +28,10 @@ public class RandomPath extends Algorithm implements IAlgorithm {
         Location randomLocation = randomLocation(newMap);
 
         setMyLocation(randomLocation);
+
+        if (getMyLocation().equals(getOpponentFlag())){
+            System.out.println("Winner:" + getMe(game));
+        }
 
         return getMyLocation();
     }

@@ -39,5 +39,9 @@ public class ReadInfo {
         }
     }
 
+    public static int readCoordinate(){
+        System.out.println("Insira a coordenada");
+        return Tools.readInt();
+    }
 
 }
