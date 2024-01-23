@@ -1,10 +1,190 @@
-[
-  {"Map ID":1,
-  "Graph Map":"Adjacency Matrix\n----------------\nindex\t0 1 2 3 4 5 6 7 8 9 10111213141516171819\n\n0\t0 0 1 1 0 1 0 0 0 1 1 1 1 1 0 1 1 0 1 0 \n1\t0 0 1 1 1 1 0 0 0 0 1 0 1 1 0 1 1 1 1 0 \n2\t1 1 0 0 1 0 1 1 1 0 0 1 0 1 1 0 1 0 0 0 \n3\t1 1 0 0 1 0 0 1 0 1 1 0 0 1 0 1 1 1 0 0 \n4\t0 1 1 1 0 0 1 1 0 1 0 1 1 1 1 0 1 0 1 1 \n5\t1 1 0 0 0 0 1 1 1 1 1 1 0 1 1 0 0 1 0 1 \n6\t0 0 1 0 1 1 0 1 0 1 0 1 1 1 1 1 0 0 0 0 \n7\t0 0 1 1 1 1 1 0 1 1 1 1 0 1 1 1 0 0 1 0 \n8\t0 0 1 0 0 1 0 1 0 0 1 0 1 1 0 0 1 0 1 1 \n9\t1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 1 1 0 1 1 \n10\t1 1 0 1 0 1 0 1 1 0 0 1 0 1 1 1 0 1 0 0 \n11\t1 0 1 0 1 1 1 1 0 1 1 0 1 0 0 1 1 1 1 1 \n12\t1 1 0 0 1 0 1 0 1 1 0 1 0 0 0 0 1 1 0 1 \n13\t1 1 1 1 1 1 1 1 1 1 1 0 0 0 1 0 1 0 0 1 \n14\t0 0 1 0 1 1 1 1 0 1 1 0 0 1 0 1 1 1 1 1 \n15\t1 1 0 1 0 0 1 1 0 1 1 1 0 0 1 0 1 1 1 0 \n16\t1 1 1 1 1 0 0 0 1 1 0 1 1 1 1 1 0 0 0 1 \n17\t0 1 0 1 0 1 0 0 0 0 1 1 1 0 1 1 0 0 0 0 \n18\t1 1 0 0 1 0 0 1 1 1 0 1 0 0 1 1 0 0 0 1 \n19\t0 0 0 0 1 1 0 0 1 1 0 1 1 1 1 0 1 0 1 0 \n\n\nVertex Values\n-------------\nindex\tvalue\n\n0\tX: 12\tY: 9\n1\tX: 15\tY: 36\n2\tX: 57\tY: 46\n3\tX: 82\tY: 24\n4\tX: 11\tY: 19\n5\tX: 42\tY: 13\n6\tX: 78\tY: 65\n7\tX: 99\tY: 94\n8\tX: 15\tY: 81\n9\tX: 11\tY: 73\n10\tX: 73\tY: 83\n11\tX: 12\tY: 91\n12\tX: 57\tY: 94\n13\tX: 45\tY: 57\n14\tX: 80\tY: 95\n15\tX: 73\tY: 62\n16\tX: 34\tY: 85\n17\tX: 69\tY: 99\n18\tX: 65\tY: 35\n19\tX: 56\tY: 18\n\n\nWeights of Edges\n----------------\nindex\tweight\n\n0 to 18\t7.0\n0 to 16\t2.0\n0 to 15\t6.0\n0 to 13\t10.0\n0 to 12\t14.0\n0 to 11\t5.0\n0 to 10\t10.0\n0 to 9\t11.0\n0 to 5\t5.0\n0 to 3\t13.0\n0 to 2\t10.0\n1 to 18\t11.0\n1 to 17\t7.0\n1 to 16\t12.0\n1 to 15\t10.0\n1 to 13\t14.0\n1 to 12\t8.0\n1 to 10\t8.0\n1 to 5\t10.0\n1 to 4\t2.0\n1 to 3\t7.0\n1 to 2\t7.0\n2 to 16\t5.0\n2 to 14\t13.0\n2 to 13\t13.0\n2 to 11\t13.0\n2 to 8\t8.0\n2 to 7\t6.0\n2 to 6\t13.0\n2 to 4\t11.0\n3 to 17\t8.0\n3 to 16\t13.0\n3 to 15\t10.0\n3 to 13\t6.0\n3 to 10\t13.0\n3 to 9\t6.0\n3 to 7\t10.0\n3 to 4\t6.0\n4 to 19\t5.0\n4 to 18\t9.0\n4 to 16\t15.0\n4 to 14\t7.0\n4 to 13\t2.0\n4 to 12\t2.0\n4 to 11\t14.0\n4 to 9\t15.0\n4 to 7\t10.0\n4 to 6\t14.0\n5 to 19\t14.0\n5 to 17\t14.0\n5 to 14\t12.0\n5 to 13\t7.0\n5 to 11\t12.0\n5 to 10\t11.0\n5 to 9\t12.0\n5 to 8\t8.0\n5 to 7\t8.0\n5 to 6\t2.0\n6 to 15\t15.0\n6 to 14\t7.0\n6 to 13\t10.0\n6 to 12\t10.0\n6 to 11\t12.0\n6 to 9\t10.0\n6 to 7\t6.0\n7 to 18\t10.0\n7 to 15\t13.0\n7 to 14\t8.0\n7 to 13\t8.0\n7 to 11\t1.0\n7 to 10\t6.0\n7 to 9\t5.0\n7 to 8\t2.0\n8 to 19\t12.0\n8 to 18\t3.0\n8 to 16\t9.0\n8 to 13\t3.0\n8 to 12\t3.0\n8 to 10\t7.0\n9 to 19\t12.0\n9 to 18\t3.0\n9 to 16\t9.0\n9 to 15\t10.0\n9 to 14\t11.0\n9 to 13\t10.0\n9 to 12\t15.0\n9 to 11\t6.0\n10 to 17\t10.0\n10 to 15\t7.0\n10 to 14\t15.0\n10 to 13\t15.0\n10 to 11\t9.0\n11 to 19\t2.0\n11 to 18\t13.0\n11 to 17\t14.0\n11 to 16\t2.0\n11 to 15\t6.0\n11 to 12\t1.0\n12 to 19\t7.0\n12 to 17\t13.0\n12 to 16\t12.0\n13 to 19\t6.0\n13 to 16\t4.0\n13 to 14\t15.0\n14 to 19\t14.0\n14 to 18\t15.0\n14 to 17\t8.0\n14 to 16\t14.0\n14 to 15\t3.0\n15 to 18\t10.0\n15 to 17\t15.0\n15 to 16\t6.0\n16 to 19\t1.0\n18 to 19\t5.0\n\n"},
-  {"Map ID":2,
-    "Graph Map":"Adjacency Matrix\n----------------\nindex\t0 1 2 3 4 5 6 7 8 9 1011121314\n\n0\t0 1 1 1 1 0 0 0 1 1 1 1 1 1 1 \n1\t1 0 1 0 0 0 1 0 0 0 1 1 1 0 1 \n2\t1 1 0 1 0 1 0 1 0 1 1 1 0 1 1 \n3\t1 0 1 0 1 1 1 1 1 1 0 1 1 1 0 \n4\t1 0 0 1 0 1 1 1 1 0 1 1 1 1 1 \n5\t0 0 1 1 1 0 1 1 1 1 1 0 1 1 0 \n6\t0 1 0 1 1 1 0 1 0 1 0 1 0 1 1 \n7\t0 0 1 1 1 1 1 0 1 1 1 1 1 1 1 \n8\t1 0 0 1 1 1 0 1 0 1 1 0 0 1 1 \n9\t1 0 1 1 0 1 1 1 1 0 1 0 0 1 1 \n10\t1 1 1 0 1 1 0 1 1 1 0 1 1 1 0 \n11\t1 1 1 1 1 0 1 1 0 0 1 0 1 1 1 \n12\t1 1 0 1 1 1 0 1 0 0 1 1 0 0 1 \n13\t1 0 1 1 1 1 1 1 1 1 1 1 0 0 1 \n14\t1 1 1 0 1 0 1 1 1 1 0 1 1 1 0 \n\n\nVertex Values\n-------------\nindex\tvalue\n\n0\tX: 56\tY: 65\n1\tX: 83\tY: 66\n2\tX: 16\tY: 91\n3\tX: 42\tY: 36\n4\tX: 84\tY: 61\n5\tX: 89\tY: 72\n6\tX: 79\tY: 3\n7\tX: 20\tY: 74\n8\tX: 92\tY: 5\n9\tX: 78\tY: 75\n10\tX: 16\tY: 38\n11\tX: 89\tY: 58\n12\tX: 25\tY: 61\n13\tX: 2\tY: 16\n14\tX: 47\tY: 20\n\n\nWeights of Edges\n----------------\nindex\tweight\n\n0 to 14\t11.0\n0 to 13\t13.0\n0 to 12\t15.0\n0 to 11\t12.0\n0 to 10\t12.0\n0 to 9\t7.0\n0 to 8\t14.0\n0 to 4\t15.0\n0 to 3\t12.0\n0 to 2\t15.0\n0 to 1\t8.0\n1 to 14\t9.0\n1 to 12\t6.0\n1 to 11\t9.0\n1 to 10\t5.0\n1 to 6\t5.0\n1 to 2\t14.0\n2 to 14\t14.0\n2 to 13\t8.0\n2 to 11\t3.0\n2 to 10\t9.0\n2 to 9\t13.0\n2 to 7\t6.0\n2 to 5\t5.0\n2 to 3\t2.0\n3 to 13\t4.0\n3 to 12\t15.0\n3 to 11\t5.0\n3 to 9\t12.0\n3 to 8\t5.0\n3 to 7\t13.0\n3 to 6\t13.0\n3 to 5\t1.0\n3 to 4\t9.0\n4 to 14\t15.0\n4 to 13\t9.0\n4 to 12\t11.0\n4 to 11\t10.0\n4 to 10\t15.0\n4 to 8\t1.0\n4 to 7\t8.0\n4 to 6\t5.0\n4 to 5\t11.0\n5 to 13\t2.0\n5 to 12\t1.0\n5 to 10\t2.0\n5 to 9\t10.0\n5 to 8\t4.0\n5 to 7\t13.0\n5 to 6\t11.0\n6 to 14\t8.0\n6 to 13\t1.0\n6 to 11\t4.0\n6 to 9\t1.0\n6 to 7\t9.0\n7 to 14\t15.0\n7 to 13\t8.0\n7 to 12\t15.0\n7 to 11\t14.0\n7 to 10\t7.0\n7 to 9\t14.0\n7 to 8\t7.0\n8 to 14\t5.0\n8 to 13\t10.0\n8 to 10\t2.0\n8 to 9\t4.0\n9 to 14\t6.0\n9 to 13\t5.0\n9 to 10\t13.0\n10 to 13\t5.0\n10 to 12\t4.0\n10 to 11\t1.0\n11 to 14\t7.0\n11 to 13\t8.0\n11 to 12\t9.0\n12 to 14\t9.0\n13 to 14\t10.0\n\n"},
-  {"Map ID":3,
-    "Graph Map":"Adjacency Matrix\n----------------\nindex\t0 1 2 3 4 5 6 7 8 9 \n\n0\t0 1 1 1 1 1 1 1 1 1 \n1\t1 0 0 1 0 0 1 1 1 1 \n2\t1 0 0 1 1 1 1 1 1 1 \n3\t1 1 1 0 1 1 1 1 1 0 \n4\t1 0 1 1 0 1 1 1 1 1 \n5\t1 0 1 1 1 0 1 1 0 1 \n6\t1 1 1 1 1 1 0 1 1 1 \n7\t1 1 1 1 1 1 1 0 1 1 \n8\t1 1 1 1 1 0 1 1 0 0 \n9\t1 1 1 0 1 1 1 1 0 0 \n\n\nVertex Values\n-------------\nindex\tvalue\n\n0\tX: 32\tY: 64\n1\tX: 69\tY: 99\n2\tX: 79\tY: 50\n3\tX: 10\tY: 61\n4\tX: 10\tY: 23\n5\tX: 22\tY: 63\n6\tX: 22\tY: 81\n7\tX: 49\tY: 26\n8\tX: 65\tY: 93\n9\tX: 49\tY: 82\n\n\nWeights of Edges\n----------------\nindex\tweight\n\n0 to 9\t12.0\n0 to 8\t3.0\n0 to 7\t12.0\n0 to 6\t2.0\n0 to 5\t6.0\n0 to 4\t5.0\n0 to 3\t10.0\n0 to 2\t1.0\n0 to 1\t7.0\n1 to 9\t9.0\n1 to 8\t13.0\n1 to 7\t14.0\n1 to 6\t14.0\n1 to 3\t14.0\n2 to 9\t11.0\n2 to 8\t2.0\n2 to 7\t1.0\n2 to 6\t8.0\n2 to 5\t15.0\n2 to 4\t8.0\n2 to 3\t2.0\n3 to 8\t14.0\n3 to 7\t13.0\n3 to 6\t7.0\n3 to 5\t15.0\n3 to 4\t9.0\n4 to 9\t11.0\n4 to 8\t6.0\n4 to 7\t6.0\n4 to 6\t11.0\n4 to 5\t5.0\n5 to 9\t13.0\n5 to 7\t14.0\n5 to 6\t3.0\n6 to 9\t4.0\n6 to 8\t6.0\n6 to 7\t9.0\n7 to 9\t3.0\n7 to 8\t5.0\n\n"},
-  {"Map ID":4,
-    "Graph Map":"Adjacency Matrix\n----------------\nindex\t0 1 2 3 4 \n\n0\t0 1 1 1 1 \n1\t1 0 1 0 1 \n2\t1 1 0 1 1 \n3\t1 0 1 0 1 \n4\t1 1 1 1 0 \n\n\nVertex Values\n-------------\nindex\tvalue\n\n0\tX: 85\tY: 4\n1\tX: 17\tY: 24\n2\tX: 72\tY: 1\n3\tX: 70\tY: 36\n4\tX: 59\tY: 17\n\n\nWeights of Edges\n----------------\nindex\tweight\n\n0 to 4\t5.0\n0 to 3\t3.0\n0 to 2\t13.0\n0 to 1\t6.0\n1 to 4\t15.0\n1 to 2\t6.0\n2 to 4\t14.0\n2 to 3\t3.0\n3 to 4\t12.0\n\n"}
-][{"Map ID":1,"Vertex Values":[Ljava.lang.Object;@37f8bb67},{"Map ID":2,"Vertex Values":[Ljava.lang.Object;@49c2faae},{"Map ID":3,"Vertex Values":[Ljava.lang.Object;@20ad9418},{"Map ID":4,"Vertex Values":[Ljava.lang.Object;@31cefde0}][{"Map ID:":1,"Vertex Values":collections.lists.arrayLists.ArrayList$BasicIterator@2e0fa5d3},{"Map ID:":2,"Vertex Values":collections.lists.arrayLists.ArrayList$BasicIterator@5010be6},{"Map ID:":3,"Vertex Values":collections.lists.arrayLists.ArrayList$BasicIterator@685f4c2e},{"Map ID:":4,"Vertex Values":collections.lists.arrayLists.ArrayList$BasicIterator@7daf6ecc}][{"Map ID:":1,"Vertex Values":"[X: 81\tY: 80, X: 11\tY: 81, X: 13\tY: 68, X: 1\tY: 87, X: 37\tY: 41, X: 86\tY: 59, X: 88\tY: 65, X: 27\tY: 2, X: 36\tY: 75, X: 25\tY: 39, X: 56\tY: 78, X: 47\tY: 19, X: 70\tY: 24, X: 10\tY: 58, X: 25\tY: 38, X: 16\tY: 56, X: 66\tY: 44, X: 19\tY: 76, X: 14\tY: 90, X: 69\tY: 5]"},{"Map ID:":2,"Vertex Values":"[X: 1\tY: 82, X: 16\tY: 64, X: 43\tY: 75, X: 76\tY: 60, X: 9\tY: 91, X: 77\tY: 36, X: 54\tY: 91, X: 47\tY: 27, X: 82\tY: 22, X: 0\tY: 53, X: 5\tY: 73, X: 73\tY: 71, X: 7\tY: 32, X: 3\tY: 61, X: 65\tY: 60, null, null, null, null, null]"},{"Map ID:":3,"Vertex Values":"[X: 8\tY: 41, X: 98\tY: 99, X: 16\tY: 46, X: 99\tY: 19, X: 12\tY: 95, X: 98\tY: 26, X: 20\tY: 4, X: 22\tY: 66, X: 19\tY: 34, X: 77\tY: 69]"},{"Map ID:":4,"Vertex Values":"[X: 85\tY: 68, X: 65\tY: 92, X: 0\tY: 79, X: 43\tY: 43, X: 9\tY: 36, null, null, null, null, null]"}]
+{
+  "maps": [
+    {
+      "vertices": [
+        {
+          "x": 73,
+          "y": 87
+        }
+      ],
+      "id": 1
+    },
+    {
+      "vertices": [
+        {
+          "x": 3,
+          "y": 56
+        },
+        {
+          "x": 84,
+          "y": 54
+        },
+        {
+          "x": 22,
+          "y": 40
+        },
+        {
+          "x": 26,
+          "y": 91
+        },
+        {
+          "x": 84,
+          "y": 22
+        },
+        {
+          "x": 87,
+          "y": 65
+        },
+        {
+          "x": 70,
+          "y": 4
+        },
+        {
+          "x": 71,
+          "y": 6
+        },
+        {
+          "x": 73,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 49
+        },
+        {
+          "x": 17,
+          "y": 77
+        },
+        {
+          "x": 52,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 86
+        },
+        {
+          "x": 25,
+          "y": 41
+        },
+        {
+          "x": 2,
+          "y": 54
+        }
+      ],
+      "id": 2
+    },
+    {
+      "vertices": [
+        {
+          "x": 26,
+          "y": 65
+        },
+        {
+          "x": 17,
+          "y": 91
+        },
+        {
+          "x": 83,
+          "y": 77
+        },
+        {
+          "x": 54,
+          "y": 36
+        },
+        {
+          "x": 34,
+          "y": 76
+        },
+        {
+          "x": 54,
+          "y": 58
+        },
+        {
+          "x": 60,
+          "y": 97
+        },
+        {
+          "x": 10,
+          "y": 86
+        },
+        {
+          "x": 99,
+          "y": 59
+        },
+        {
+          "x": 57,
+          "y": 99
+        }
+      ],
+      "id": 3
+    },
+    {
+      "vertices": [
+        {
+          "x": 38,
+          "y": 86
+        },
+        {
+          "x": 39,
+          "y": 88
+        },
+        {
+          "x": 92,
+          "y": 88
+        },
+        {
+          "x": 64,
+          "y": 87
+        },
+        {
+          "x": 89,
+          "y": 88
+        }
+      ],
+      "id": 4
+    },
+    {
+      "vertices": [
+        {
+          "x": 79,
+          "y": 56
+        },
+        {
+          "x": 36,
+          "y": 17
+        },
+        {
+          "x": 61,
+          "y": 63
+        },
+        {
+          "x": 41,
+          "y": 75
+        },
+        {
+          "x": 75,
+          "y": 49
+        }
+      ],
+      "id": 5
+    },
+    {
+      "vertices": [
+        {
+          "x": 74,
+          "y": 92
+        },
+        {
+          "x": 70,
+          "y": 27
+        },
+        {
+          "x": 54,
+          "y": 49
+        }
+      ],
+      "id": 6
+    }
+  ]
+}

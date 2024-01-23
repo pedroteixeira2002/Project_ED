@@ -83,11 +83,13 @@ public abstract class Algorithm implements IAlgorithm {
 
     void botInTheWay(NetworkEnhance<Location> map, Iterator<Location> list) {
         for (Bot bot : bots) {
-            if (bot.getLocation().equals(list.next())) {
-                System.out.println("Bot in the way");
-                map.removeVertex(bot.getLocation());
-                move(game);
-            }
+            do {
+                if (bot.getLocation().equals(list.next())) {
+                    System.out.println("Bot in the way");
+                    map.removeVertex(bot.getLocation());
+                    move(game);
+                }
+            }while(list.hasNext());
         }
     }
 }

@@ -12,10 +12,12 @@ public class ReadInfo {
     public static boolean readIfIsDirectional() throws IOException {
         Display.displayDirectional();
         switch (Tools.GetInt()) {
-            case 1, default:
+            case 1:
                 return true;
             case 2:
                 return false;
+            default:
+                return true;
         }
     }
 
@@ -27,10 +29,13 @@ public class ReadInfo {
     public static boolean saveMap() throws IOException {
         Display.displaySaveMapMenu();
         switch (Tools.GetInt()) {
-            case 1, default:
+            case 1:
                 return true;
             case 2:
                 return false;
+            default:
+                return true;
+
         }
     }
 

@@ -3,131 +3,104 @@ package datapersistence;
 import game.ListMap;
 import game.Location;
 import game.Map;
+import interfaces.ILocation;
+import interfaces.IMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
-import scala.util.parsing.json.JSON;
-import structures.NetworkEnhance;
+import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import java.io.*;
 import java.util.Iterator;
+
 
 public class FileIO {
     private static final String directory = "app\\src\\main\\java\\database\\maps.json";
 
-    public FileIO() {
-
-    }
-
     /**
      * Export the map list to a json file
      */
-    public void exportGraphToJSON(ListMap maps) {
-        try (FileWriter writer = new FileWriter(directory,true)) {
-            JSONArray mapsArray = new JSONArray();
+    public static void exportToJSON(ListMap listTmp) {
+        JSONObject jsonObject = new JSONObject();
 
-            for (Map map : maps.getAllMaps()) {
-                JSONObject jsonMap = new JSONObject();
-                jsonMap.put("Map ID:", map.getId());
-                jsonMap.put("Vertex Values", map.getGraphMap().getVertices());
-                //jsonMap.put("Graph Map", map.getGraphMap().toString()); // Assuming toString() provides the necessary details
-                //jsonMap.put("Adjacency Matrix", map.getAdjacencyMatrix());
-                //jsonMap.put("Vertex Values", map.getGraphMap().);
-                //jsonMap.put("Weights of Edges", map.getGraphMap());
-                mapsArray.add(jsonMap);
+        try (FileWriter writer = new FileWriter(directory)) {
+
+            JSONArray mapsArray = new JSONArray();
+            Iterator<Map> mapsIterator = listTmp.getAllMaps().iterator();
+
+            while (mapsIterator.hasNext()) {
+                JSONObject mapObject = new JSONObject();
+
+                IMap nextMap = mapsIterator.next();
+                mapObject.put("id", nextMap.getId());
+
+                JSONArray verticesArray = new JSONArray();
+                Iterator<Location> vertexIterator = nextMap.getGraphMap().iteratorDFS(nextMap.getGraphMap().getVertex(0));
+
+                while (vertexIterator.hasNext()) {
+                    Location nextLocation = vertexIterator.next();
+                    JSONObject location = new JSONObject();
+                    location.put("x", nextLocation.getPosX());
+                    location.put("y", nextLocation.getPosY());
+                    verticesArray.add(location);
+                }
+
+                mapObject.put("vertices", verticesArray);
+                mapsArray.add(mapObject);
             }
 
-            // Write the JSON array to the file
-            writer.write(mapsArray.toJSONString());
+            jsonObject.put("maps", mapsArray);
+
+            writer.write(jsonObject.toJSONString());
             System.out.println("Exportação concluída com sucesso.");
         } catch (IOException e) {
             System.err.println("Erro ao exportar o grafo para JSON: " + e.getMessage());
         }
     }
+    public static ListMap importFromJson() {
+        ListMap mapList = new ListMap();
 
-    public void exportGraphToJSON2(Map map) {
-        try (FileWriter writer = new FileWriter(directory, true)) {
+        try {
+            Reader reader = new FileReader(directory);
+            JSONParser parser = new JSONParser();
 
-            JSONObject jsonMap = new JSONObject();
-            jsonMap.put("Map ID", map.getId());
-            jsonMap.put("Graph Map", map.getGraphMap().toString()); // Assuming toString() provides the necessary details
+            JSONObject object = (JSONObject) parser.parse(reader);
 
-            // Write a new line before appending the new JSON object
-            writer.write(System.lineSeparator());
+            JSONArray maps = (JSONArray) object.get("maps");
+            IMap[] map = new IMap[maps.size()];
 
-            // Append the new JSON object to the existing file
-            JSONValue.writeJSONString(jsonMap, writer);
+            for (int i = 0; i < maps.size(); i++) {
+                map[i] = new Map();
 
-            System.out.println("Exportação concluída com sucesso.");
+                JSONObject mapTmp = (JSONObject) maps.get(i);
+
+                long id = (Long) mapTmp.get("id");
+
+                JSONArray vertices = (JSONArray) mapTmp.get("vertices");
+                ILocation[] location = new ILocation[vertices.size()];
+
+                for (int j = 0; j < vertices.size(); j++) {
+
+                    JSONObject locationTmp = (JSONObject) vertices.get(j);
+                    long x = (Long) locationTmp.get("x");
+                    long y = (Long) locationTmp.get("y");
+
+                    location[j] = new Location((int) x, (int) y);
+
+                    map[i].getGraphMap().addVertex((Location) location[j]);
+                }
+                map[i].setId((int) id);
+                mapList.addMap((Map) map[i]);
+            }
+
+            return mapList; // Add this line to return the maps after successful parsing
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            System.err.println("Erro ao exportar o grafo para JSON: " + e.getMessage());
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
-    }
-
-
-
-    /**
-     * Import the list of maps from a json file
-     */
-    public ListMap importMapsFromJson(String directory) {
-        ListMap maps = new ListMap();
-
-        return maps;
-    }
-
-
-    /**
-     * Parse a JSONObject into a Map object
-     *
-     * @param mapJson The JSONObject representing a map
-     * @return Map object
-     */
-    private Map parseMap(JSONObject mapJson) {
-        Map map = new Map();
-
-        // Set map id
-        long mapId = (Long) mapJson.get("id");
-        map.setId((int) mapId);
-
-        // Get locations array
-        JSONArray locationsArray = (JSONArray) mapJson.get("locations");
-
-        // Add locations to the map
-        for (Object locationObject : locationsArray) {
-            JSONObject locationJson = (JSONObject) locationObject;
-            Location location = parseLocation(locationJson);
-            map.getGraphMap().addVertex(location);
-        }
-
-        // Get edges array
-        JSONArray edgesArray = (JSONArray) mapJson.get("edges");
-
-        // Add edges to the map
-        for (Object edgeObject : edgesArray) {
-            JSONObject edgeJson = (JSONObject) edgeObject;
-            Location from = parseLocation((JSONObject) edgeJson.get("from"));
-            Location to = parseLocation((JSONObject) edgeJson.get("to"));
-            double weight = (Double) edgeJson.get("weight");
-
-            map.getGraphMap().addEdge(from, to, weight);
-        }
-
-        return map;
-    }
-
-    /**
-     * Parse a JSONObject into a Location object
-     *
-     * @param locationJson The JSONObject representing a location
-     * @return Location object
-     */
-    private Location parseLocation(JSONObject locationJson) {
-        int x = ((Long) locationJson.get("x")).intValue();
-        int y = ((Long) locationJson.get("y")).intValue();
-        return new Location(x, y);
     }
 }

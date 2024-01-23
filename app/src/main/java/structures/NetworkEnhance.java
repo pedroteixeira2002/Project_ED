@@ -7,9 +7,9 @@ import game.Location;
 public class NetworkEnhance<T> extends Network<T> {
     private Object[][] adjMatrix;
     public NetworkEnhance() {
-
         super();
     }
+
 
     /**
      * Get the index of a vertex

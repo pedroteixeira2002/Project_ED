@@ -1,8 +1,6 @@
 package game;
 
 import interfaces.IMap;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import structures.NetworkEnhance;
 
 import java.util.Iterator;
@@ -13,29 +11,37 @@ public class Map implements IMap, Comparable<Map> {
     private int id;
     private NetworkEnhance<Location> graphMap;
 
+
     public Map() {
         this.id = nextId++;
         this.graphMap = new NetworkEnhance<>();
     }
 
+    public Map(int id, NetworkEnhance<Location> graphMap) {
+        this.id = id;
+        this.graphMap = graphMap;
+    }
 
+    @Override
     public NetworkEnhance<Location> getGraphMap() {
         return graphMap;
     }
 
     /**
      * Get the map
+     *
      * @param numLocations
      * @param bidirectional
      * @param edgeDensity
      */
+    @Override
     public Map generateMap(int numLocations, boolean bidirectional, double edgeDensity) {
         // Clear the map and flag locations
         this.graphMap = new NetworkEnhance<>();
 
         // Check if edgeDensity is in the correct range
         if (edgeDensity < 0.01 || edgeDensity > 1.00) {
-            throw new IllegalArgumentException("A densidade de arestas deve estar no intervalo de 0.01 a 1.00");
+            throw new IllegalArgumentException("Choose a density between 0.01 and 1.00");
         }
 
 
@@ -43,7 +49,7 @@ public class Map implements IMap, Comparable<Map> {
         for (int i = 0; i < numLocations; i++) {
             int x = (int) (Math.random() * 100); // Give random coordinates between 0 and 100
             int y = (int) (Math.random() * 100); // Give random coordinates between 0 and 100
-            Location location = new Location(x,y);
+            Location location = new Location(x, y);
             this.graphMap.addVertex(location);
         }
 
@@ -92,6 +98,7 @@ public class Map implements IMap, Comparable<Map> {
 
     /**
      * Check if the generated map is connected
+     *
      * @return true if the map is connected, false otherwise
      */
     private boolean isConnected() {
@@ -108,18 +115,21 @@ public class Map implements IMap, Comparable<Map> {
 
     /**
      * Get the map id
+     *
      * @return
      */
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
     /**
      * Get a random location in the map
+     *
      * @return a random location in the map
      */
     private Location getRandomLocation() {
