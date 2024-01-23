@@ -5,6 +5,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import structures.NetworkEnhance;
 
+import java.util.Iterator;
 import java.util.Random;
 
 public class Map implements IMap, Comparable<Map> {
@@ -51,31 +52,6 @@ public class Map implements IMap, Comparable<Map> {
         int maxEdges = (int) (numLocations * (numLocations - 1) * edgeDensity);
         Random random = new Random();
 
-
-        while (!graphMap.isConnected()) {
-            Location from = getRandomLocation();
-            Location to = getRandomLocation();
-
-            if (from != null && to != null && !from.equals(to) && !graphMap.containsEdge(from, to)) {
-                double weight = 1 + random.nextInt(15); // Distância aleatória entre 1 e 15 quilômetros (peso da aresta)
-
-                graphMap.addEdge(from, to, weight);
-
-                if (bidirectional) {
-                    // If bidirectional, add the edge in the opposite direction
-                    graphMap.addEdge(to, from, weight);
-                }
-            }
-        }
-
-        // Verifica se o grafo se tornou conexo após o loop
-        if (graphMap.isConnected()) {
-            System.out.println("O grafo é conexo!");
-        } else {
-            System.out.println("O grafo não é conexo!");
-        }
-
-        /*
         for (int i = 0; i < maxEdges; i++) {
             Location from = getRandomLocation();
             Location to = getRandomLocation();
@@ -91,7 +67,20 @@ public class Map implements IMap, Comparable<Map> {
                 }
             }
         }
-        */
+
+        // Check if the generated map is connected
+        if (!isConnected()) {
+            // If not connected, regenerate the map until it is connected
+            return generateMap(numLocations, bidirectional, edgeDensity);
+        }
+
+
+        if (isConnected()) {
+            System.out.println("Mapa conexo.");
+        } else {
+            System.out.println("Mapa não conexo.");
+        }
+
 
         // Atualize esta linha para armazenar o ID do mapa
         System.out.println("Mapa gerado com ID: " + this.id);
@@ -101,6 +90,21 @@ public class Map implements IMap, Comparable<Map> {
         return this;
     }
 
+    /**
+     * Check if the generated map is connected
+     * @return true if the map is connected, false otherwise
+     */
+    private boolean isConnected() {
+        Iterator<Location> iterator = graphMap.iteratorBFS(graphMap.getVertex(0));
+        int count = 0;
+
+        while (iterator.hasNext()) {
+            iterator.next();
+            count++;
+        }
+
+        return count == graphMap.size();
+    }
 
     /**
      * Get the map id
@@ -143,5 +147,4 @@ public class Map implements IMap, Comparable<Map> {
     public int compareTo(Map o) {
         return this.id - o.id;
     }
-
 }

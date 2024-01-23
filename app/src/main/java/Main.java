@@ -17,10 +17,16 @@ public class Main {
         listMap.addMap(gameMap2);
         Map gameMap3 = new Map();
         listMap.addMap(gameMap3);
+        Map gameMap4 = new Map();
+        listMap.addMap(gameMap4);
+        //Map gameMap5 = new Map();
+        //listMap.addMap(gameMap5);
 
         gameMap1.generateMap(20, true, 0.5);
         gameMap2.generateMap(15, true, 0.7);
         gameMap3.generateMap(10, false, 0.9);
+        gameMap4.generateMap(5, false, 0.9);
+        //gameMap5.generateMap(5, false, 0.9);
 
         //Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
 
@@ -30,8 +36,9 @@ public class Main {
 
         FileIO fileIO = new FileIO();
         fileIO.exportGraphToJSON(listMap);
+        //fileIO.exportGraphToJSON2(gameMap5);
 
-        //fileIO.importMapFromJson(2, listMap);
+        //fileIO.importMapsFromJson("src\\main\\java\\database\\maps.json");
 
 
         /*
@@ -71,20 +78,7 @@ public class Main {
         graph.addEdge("FA", "F", "A").setAttribute("ui.label", "FA");
 
         // Visualize o grafo
-<<<<<<< HEAD
         Viewer viewer = graph.Display();
          */
-
-        Map gameMap = new Map();
-        gameMap.generateMap(13, true, 0.5);
-
-        Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
-
-        System.out.println(gameMap);
-
-=======
-        Viewer viewer = graph.display();
-        */
->>>>>>> ribeiro
     }
 }

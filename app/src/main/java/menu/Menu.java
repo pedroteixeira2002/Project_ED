@@ -13,8 +13,8 @@ public class Menu {
             case 2:
                 System.out.println(Display.displayNewGameMenu());
 
-                case3:
-                System.out.println(display.displayNewMap);
+                //case3:
+                //System.out.println(display.displayNewMap);
 
 
 
