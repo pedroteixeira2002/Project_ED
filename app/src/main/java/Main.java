@@ -1,10 +1,14 @@
 import datapersistence.FileIO;
 import game.ListMap;
 import game.Map;
+import menu.Menu;
+import menu.ReadInfo;
+import menu.Tools;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-
         ListMap listMap = new ListMap();
 
         Map gameMap1 = new Map();
@@ -18,18 +22,11 @@ public class Main {
         Map gameMap5 = new Map();
         listMap.addMap(gameMap5);
 
-
-
         gameMap1.generateMap(1, true, 0.5);
         gameMap2.generateMap(15, true, 0.7);
         gameMap3.generateMap(10, false, 0.9);
         gameMap4.generateMap(5, false, 0.9);
         gameMap5.generateMap(5, false, 0.9);
-
-
-
-        //Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
-
 
         Map gameMap6 = new Map();
         gameMap6.generateMap(3, false, 0.7);

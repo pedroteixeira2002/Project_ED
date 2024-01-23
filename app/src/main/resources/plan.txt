@@ -15,7 +15,7 @@
 _________________________________________________________________________________
 |                        Questões a ter atenção                                  |
 |________________________________________________________________________________|
-|   !n1.1 Deverá ser possível importar um mapa que terá sido previamente definido    |
+|   y1.1 Deverá ser possível importar um mapa que terá sido previamente definido    |
 |noutra instância do programa e consequentemente, exportá-lo                     |
 |   y1.2 Configurar as características do mapa                                      |
 |   y     1.2.1 Definir quantidade de localizações existentes no mapa                 |
@@ -28,12 +28,12 @@ ________________________________________________________________________________
 |   n    4.1.1 Garantir que os algoritmos só se repetem se o número de bots ultrapas-|
 |-sar o número de algoritmos disponível                                              |
 |   y5.1 Todos os bots deverão estar localizados na mesma posição da bandeira       |
-|   n6.1 Os bots movem-se um de cada vez (bot1, bot2, bot3, etc)                    |
-|   n     6.1.1 Quando não há mais bots volta ao primeiro(Na quarta ronda, deve voltar|
+|  fn6.1 Os bots movem-se um de cada vez (bot1, bot2, bot3, etc)                    |
+|  fn     6.1.1 Quando não há mais bots volta ao primeiro(Na quarta ronda, deve voltar|
 |ao bot 1.                                                                       |
-|   n 7.1 Um bot não pode estar na mesma localização de outro,| exceto se for a       |
+|  !fn 7.1 Um bot não pode estar na mesma localização de outro,| exceto se for a       |
 |localização de uma bandeira .                                                   |
-|   n8. Deverá ser possível acompanhar visualmente as movimentações realizadas      |
+|  fn8. Deverá ser possível acompanhar visualmente as movimentações realizadas      |
 |   y9. Deverão ser criados pelo menos 3 algarismos de movimentação dos bots        |
 |   !n10. Desenvolver menus                                                          |
 |________________________________________________________________________________|

@@ -4,14 +4,14 @@ import java.io.IOException;
 
 public class ReadInfo {
 
-    public static int readQuantityOfLocalizations() throws IOException {
-        System.out.println("\nEnter the amount of localizations you want in your map: \t");
-        return Tools.GetInt();
+    public static int readQuantityOfLocalizations() {
+        System.out.println("\nEnter the amount of localizations you want in your map:");
+        return Tools.readInt();
     }
 
-    public static boolean readIfIsDirectional() throws IOException {
+    public static boolean readIfIsDirectional() {
         Display.displayDirectional();
-        switch (Tools.GetInt()) {
+        switch (Tools.readInt()) {
             case 1:
                 return true;
             case 2:
@@ -22,13 +22,13 @@ public class ReadInfo {
     }
 
     public static double readEdgeDensity() throws IOException {
-        System.out.println("\nEnter the wished density for your edges: \t");
+        System.out.println("\nEnter the wished density for your edges(0.1 to 1):");
         return Tools.getDouble();
     }
 
-    public static boolean saveMap() throws IOException {
+    public static boolean saveMap() {
         Display.displaySaveMapMenu();
-        switch (Tools.GetInt()) {
+        switch (Tools.readInt()) {
             case 1:
                 return true;
             case 2:

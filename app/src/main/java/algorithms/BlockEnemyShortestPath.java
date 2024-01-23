@@ -14,17 +14,19 @@ public class BlockEnemyShortestPath extends Algorithm implements IAlgorithm {
 
     @Override
     public Location move(Game game) {
-        NetworkEnhance<Location> tempMap = super.getMap();
-        Iterator<Location> list = tempMap.iteratorShortestPath
-                (super.getOpponentFlag(), super.getMyLocation());
 
-        botInTheWay(tempMap, list);
+        NetworkEnhance<Location> newMap;
 
-        double shortestPathWeight = tempMap.shortestPathWeight
-                (super.getOpponentFlag(), super.getMyLocation());
-        System.out.println("Actual Enemy Shortest Path Weight : " + shortestPathWeight);
+        newMap = botInTheWay(super.getMap());
 
+        Iterator<Location> list = newMap.iteratorShortestPath
+                (super.getMyLocation(), super.getOpponentFlag());
         setMyLocation(list.next());
+
+        double shortestPathWeight = newMap.shortestPathWeight
+                (super.getOpponentFlag(),super.getMyLocation());
+        System.out.println("Actual opponent shortest path weight: " + shortestPathWeight);
+
 
         return getMyLocation();
     }

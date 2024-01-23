@@ -6,8 +6,7 @@ public class Display {
                 "|                                Menu                               |\n" +
                 "|___________________________________________________________________|\n" +
                 "| 1. New game                                                       |\n" +
-                "| 2. List available maps                                            |\n" +
-                "| 3. Create new map                                                 |\n" +
+                "| 2. Create new map                                                 |\n" +
                 "|___________________________________________________________________|\n";
     }
     public static String displayNewGameMenu() {

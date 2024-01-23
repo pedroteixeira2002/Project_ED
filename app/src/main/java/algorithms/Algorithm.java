@@ -14,6 +14,7 @@ public abstract class Algorithm implements IAlgorithm {
     private NetworkEnhance<Location> map;
     private OrderedLinkedList<Bot> bots;
     private Location opponentFlag;
+    private Location myFlag;
     private Location myLocation;
     private Game game;
 
@@ -21,6 +22,7 @@ public abstract class Algorithm implements IAlgorithm {
         this.map = game.getMap().getGraphMap();
         this.opponentFlag = getOpponent(game).getFlag();
         this.myLocation = getMe(game).getFlag();
+        this.myFlag = getMe(game).getFlag();
         for (Bot bot : getMe(game).getListBots()) {
             this.bots.add(bot);
         }
@@ -81,15 +83,22 @@ public abstract class Algorithm implements IAlgorithm {
         }
     }
 
-    void botInTheWay(NetworkEnhance<Location> map, Iterator<Location> list) {
-        for (Bot bot : bots) {
+    public NetworkEnhance<Location> botInTheWay(NetworkEnhance<Location> map) {
+        Iterator<Location> list = map.iteratorShortestPath
+                (myLocation, opponentFlag);
+
+        Iterator<Bot> botIterator = bots.iterator();
+        while (botIterator.hasNext()) {
+            Bot nextBot = botIterator.next();
             do {
-                if (bot.getLocation().equals(list.next())) {
+                if (nextBot.getLocation().equals(list.next()) &&
+                        !nextBot.getLocation().equals(myFlag) &&
+                        !nextBot.getLocation().equals(opponentFlag)) {
                     System.out.println("Bot in the way");
-                    map.removeVertex(bot.getLocation());
-                    move(game);
+                    map.removeVertex(nextBot.getLocation());
                 }
-            }while(list.hasNext());
+            } while (list.hasNext());
         }
+        return map;
     }
 }

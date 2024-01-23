@@ -1,9 +1,5 @@
 package game;
 
-import collections.lists.OrderedLinkedList;
-import collections.lists.arrayLists.ArrayUnorderedList;
-import org.checkerframework.common.reflection.qual.NewInstance;
-
 import java.util.Random;
 
 public class Game {
@@ -36,7 +32,12 @@ public class Game {
     /**
      * Start a new game, setting the turn to any player and the round to 1
      */
-    public void newGame(){
+    public Player newGame(){
+
+        verify();
+        return null;
+    }
+    public void verify(){
         // Lógica para configurar os jogadores, bandeiras, etc.
         Random random = new Random();
         // Gera um número aleatório (0 ou 1) para decidir qual jogador começa
@@ -61,7 +62,7 @@ public class Game {
         // Move o bot para a nova localização se o movimento for válido
         movingbot.getAlgorithm().move(this);
         // Verifica se a jogada resultou na vitória
-        if (checkVitoryCondition(turn, turn == player1 ? player2 : player1)){ // Verifica se o jogador atual é um dos
+        if (checkVictoryCondition(turn, turn == player1 ? player2 : player1)){ // Verifica se o jogador atual é um dos
             // jogadores e retorna o outro jogador
             System.out.println("Vitória do jogador " + turn.getName());
         } else {
@@ -87,12 +88,13 @@ public class Game {
      * This method checks if the victory condition is met
      * @return true if the victory condition is met, false otherwise
      */
-    private boolean checkVitoryCondition(Player currentPlayer, Player opponentPlayer) {
+    private boolean checkVictoryCondition(Player currentPlayer, Player opponentPlayer) {
         // Itera sobre os bots do jogador adversário
         for (Bot opponentBot : opponentPlayer.getListBots()) {
             // Verifica se a localização do bot adversário é igual à localização da bandeira do jogador atual
             if (opponentBot.getLocation().equals(currentPlayer.getFlag())) {
-                System.out.println(opponentPlayer.getName() + "'s bot alcançou a bandeira de " + currentPlayer.getName() + ". "
+                System.out.println(opponentPlayer.getName()
+                        + "'s bot alcançou a bandeira de " + currentPlayer.getName() + ". "
                         + currentPlayer.getName() + " perdeu!");
                 return true; // Condição de vitória atingida
             }

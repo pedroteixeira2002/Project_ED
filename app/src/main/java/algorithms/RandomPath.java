@@ -20,9 +20,11 @@ public class RandomPath extends Algorithm implements IAlgorithm {
 
     @Override
     public Location move(Game game) {
-        NetworkEnhance<Location> tempMap = this.getMap();
 
-        Location randomLocation = randomLocation(tempMap);
+        NetworkEnhance<Location> newMap;
+        newMap = botInTheWay(super.getMap());
+
+        Location randomLocation = randomLocation(newMap);
 
         setMyLocation(randomLocation);
 

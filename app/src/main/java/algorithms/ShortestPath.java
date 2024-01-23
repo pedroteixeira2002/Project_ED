@@ -15,17 +15,18 @@ public class ShortestPath extends Algorithm implements IAlgorithm {
 
     @Override
     public Location move(Game game) {
-        NetworkEnhance<Location> tempMap = super.getMap();
-        Iterator<Location> list = tempMap.iteratorShortestPath
+
+        NetworkEnhance<Location> newMap;
+
+        newMap = botInTheWay(super.getMap());
+
+        Iterator<Location> list = newMap.iteratorShortestPath
                 (super.getMyLocation(), super.getOpponentFlag());
+        setMyLocation(list.next());
 
-        botInTheWay(tempMap, list);
-
-        double shortestPathWeight = tempMap.shortestPathWeight
+        double shortestPathWeight = newMap.shortestPathWeight
                 (super.getMyLocation(), super.getOpponentFlag());
         System.out.println("Actual Shortest Path Weight: " + shortestPathWeight);
-
-        setMyLocation(list.next());
 
         return getMyLocation();
     }
@@ -36,3 +37,4 @@ public class ShortestPath extends Algorithm implements IAlgorithm {
                 "The bot will use the shortest path to the flag and move there.";
     }
 }
+
