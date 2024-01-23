@@ -3,6 +3,7 @@ package menu;
 import datapersistence.FileIO;
 import game.Game;
 import game.ListMap;
+import game.Map;
 
 import java.io.IOException;
 
@@ -11,37 +12,40 @@ public class Menu {
         System.out.println(Display.displayMainMenu());
         switch (Tools.GetInt()) {
             case 1:
-                GameMenu(game, maps, export);
+                GameMenu(game, maps);
                 break;
             case 2:
                 System.out.println(maps.getAllMaps());
                 break;
             case 3:
-                System.out.println(game.getMap().generateMap
-                        (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity()));
+                Map map = game.getMap().generateMap
+                        (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity());
                 if (ReadInfo.saveMap() == true)
-                    export.exportGraphToJSON(maps);
+                    export.exportToJSON(maps);
                 break;
         }
     }
 
 
-    public static void GameMenu(Game game, ListMap maps, FileIO io) throws IOException {
+    public static void GameMenu(Game game, ListMap maps) throws IOException {
         Display.displayNewGameMenu();
         switch (Tools.GetInt()) {
             case 1:
-                System.out.println(game.getMap().generateMap
-                        (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity()));
+                (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity()));
                 if (ReadInfo.saveMap() == true)
-                    io.exportGraphToJSON(maps);
+                    FileIO.exportToJSON(maps);
                 break;
             case 2:
-                String s = ReadInfo.getLocationJson();
-                System.out.println(io.importMapsFromJson(s));
+                System.out.println(io.importMapsFromJson(ReadInfo.getLocationJson()));
                 break;
             default:
                 System.out.println("Invalid option");
-                break;
+                //import function
+            default:
+                map = (game.getMap().generateMap
+                        (ReadInfo.readQuantityOfLocalizations(), ReadInfo.readIfIsDirectional(), ReadInfo.readEdgeDensity()));
+                if (ReadInfo.saveMap() == true)
+                    FileIO.importFromJson();
         }
 
     }

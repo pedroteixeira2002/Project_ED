@@ -1,6 +1,8 @@
 package game;
 
-public class Location {
+import interfaces.ILocation;
+
+public class Location implements ILocation {
     private int posX;
     private int posY;
 

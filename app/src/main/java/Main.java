@@ -1,19 +1,12 @@
 import datapersistence.FileIO;
-import game.Game;
 import game.ListMap;
 import game.Map;
-import game.Player;
-import menu.Menu;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.view.Viewer;
-
-import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
 
         ListMap listMap = new ListMap();
+
         Map gameMap1 = new Map();
         listMap.addMap(gameMap1);
         Map gameMap2 = new Map();
@@ -22,24 +15,32 @@ public class Main {
         listMap.addMap(gameMap3);
         Map gameMap4 = new Map();
         listMap.addMap(gameMap4);
-        //Map gameMap5 = new Map();
-        //listMap.addMap(gameMap5);
+        Map gameMap5 = new Map();
+        listMap.addMap(gameMap5);
 
-        gameMap1.generateMap(20, true, 0.5);
+
+
+        gameMap1.generateMap(1, true, 0.5);
         gameMap2.generateMap(15, true, 0.7);
         gameMap3.generateMap(10, false, 0.9);
         gameMap4.generateMap(5, false, 0.9);
-        //gameMap5.generateMap(5, false, 0.9);
+        gameMap5.generateMap(5, false, 0.9);
+
+
 
         //Iterator itr = gameMap.getGraphMap().iteratorDFS(gameMap.getGraphMap().getVertex(0));
+
+
+        Map gameMap6 = new Map();
+        gameMap6.generateMap(3, false, 0.7);
+        listMap.addMap(gameMap6);
+
+        FileIO.exportToJSON(listMap);
+        listMap = FileIO.importFromJson();
 
         for (Map map : listMap.getAllMaps()) {
             System.out.println(map);
         }
-
-        FileIO fileIO = new FileIO();
-        fileIO.exportGraphToJSON(listMap);
-        //fileIO.exportGraphToJSON2(gameMap5);
 
         //fileIO.importMapsFromJson("src\\main\\java\\database\\maps.json");
 
@@ -80,5 +81,6 @@ public class Main {
         graph.addEdge("DE", "D", "E").setAttribute("ui.label", "DE");
         graph.addEdge("EF", "E", "F").setAttribute("ui.label", "EF");
         graph.addEdge("FA", "F", "A").setAttribute("ui.label", "FA");
+         */
     }
 }

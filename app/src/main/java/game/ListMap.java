@@ -7,7 +7,7 @@ public class ListMap {
     private ArrayOrderedList<Map> maps;
 
     public ListMap() {
-        this.maps = new ArrayOrderedList<Map>();
+        this.maps = new ArrayOrderedList<>();
     }
 
     /**
