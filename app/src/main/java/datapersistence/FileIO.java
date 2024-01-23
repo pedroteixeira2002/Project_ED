@@ -52,7 +52,8 @@ public class FileIO {
      * @param maps ListMap to add the imported map
      */
     /*
-    public void importMapFromJson(int mapId, ListMap maps) {
+    public ListMap importMapFromJson(int mapId, ListMap maps) {
+    ListMap maps = new listMap();
         try (FileReader reader = new FileReader(directory)) {
             JSONArray mapsArray = (JSONArray) JSONValue.parse(reader);
 
@@ -71,6 +72,9 @@ public class FileIO {
             System.out.println("Mapa com o ID " + mapId + " não encontrado no arquivo JSON.");
         } catch (IOException e) {
             System.err.println("Erro ao importar o grafo da base de dados: " + e.getMessage());
+
+        return maps;
+
         }
      */
 }

@@ -5,14 +5,8 @@ import game.Location;
 
 
 public class NetworkEnhance<T> extends Network<T> {
-<<<<<<< HEAD
 
     private Object[][] adjMatrix;
-
-=======
-    private Object[][] adjMatrix;
->>>>>>> ribeiro
-
     public NetworkEnhance() {
 
         super();
@@ -31,27 +25,13 @@ public class NetworkEnhance<T> extends Network<T> {
         }
     }
 
-<<<<<<< HEAD
-    public void expandVertexList() {
-        T[] largerVertices = (T[]) new Object[this.vertices.length * 2];
-
-        for (int i = 0; i < numVertices; i++) {
-            largerVertices[i] = vertices[i];
-        }
-
-        vertices = largerVertices;
-    }
-
-
-=======
->>>>>>> ribeiro
     public Location[] getNeighbors(T from) {
         int fromIndex = getIndex(from);
         if (fromIndex == -1) {
             return null;
         }
 
-        
+
         Location[] neighbors = new Location[adjMatrix[fromIndex].length];
         int numNeighbors = 0;
         for (int i = 0; i < adjMatrix[fromIndex].length; i++) {
@@ -86,12 +66,6 @@ public class NetworkEnhance<T> extends Network<T> {
         if (fromIndex == -1 || toIndex == -1) {
             return false;
         }
-
-<<<<<<< HEAD
-
-}
-=======
         return adjMatrix[fromIndex][toIndex] != null;
     }
 }
->>>>>>> ribeiro

@@ -49,7 +49,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'src.main.java.Main'
+    mainClass = 'java.Main'
 }
 
 test {
